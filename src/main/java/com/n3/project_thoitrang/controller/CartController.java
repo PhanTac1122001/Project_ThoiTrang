@@ -27,14 +27,5 @@ public class CartController {
         model.addAttribute("shop",cartService.findAll());
         return "user/cart";
     }
-    @GetMapping("/delete/{id}")
-    public String deleteCart(@PathVariable Integer id){
-    cartService.deleteById(id);
-    return "redirect:/";
-    }
-    @GetMapping("/deleteAll")
-    public String deleteAll(){
 
-        return "user/cart";
-    }
 }
