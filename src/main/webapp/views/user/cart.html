@@ -9,28 +9,28 @@
     <meta name="description" content="Molla - Bootstrap eCommerce Template">
     <meta name="author" content="p-themes">
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" th:href="@{/user/assets/images/icons/apple-touch-icon.png}">
-    <link rel="icon" type="image/png" sizes="32x32" th:href="@{/user/assets/images/icons/favicon-32x32.png}">
-    <link rel="icon" type="image/png" sizes="16x16" th:href="@{/user/assets/images/icons/favicon-16x16.png}">
-    <link rel="manifest" th:href="@{/user/assets/images/icons/site.webmanifest}">
-    <link rel="mask-icon" th:href="@{/user/assets/images/icons/safari-pinned-tab.svg}" color="#666666">
-    <link rel="shortcut icon" th:href="@{/user/assets/images/icons/favicon.ico}">
+    <link rel="apple-touch-icon" sizes="180x180" th:href="@{/user/images/icons/apple-touch-icon.png}">
+    <link rel="icon" type="image/png" sizes="32x32" th:href="@{/user/images/icons/favicon-32x32.png}">
+    <link rel="icon" type="image/png" sizes="16x16" th:href="@{/user/images/icons/favicon-16x16.png}">
+    <link rel="manifest" th:href="@{/user/images/icons/site.webmanifest}">
+    <link rel="mask-icon" th:href="@{/user/images/icons/safari-pinned-tab.svg}" color="#666666">
+    <link rel="shortcut icon" th:href="@{/user/images/icons/favicon.ico}">
     <meta name="apple-mobile-web-app-title" content="Molla">
     <meta name="application-name" content="Molla">
     <meta name="msapplication-TileColor" content="#cc9966">
     <meta name="msapplication-config" content="assets/images/icons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
     <!-- Plugins CSS File -->
-    <link rel="stylesheet" th:href="@{/user/assets/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/user/css/bootstrap.min.css}">
     <!-- Main CSS File -->
-    <link rel="stylesheet" th:href="@{/user/assets/css/style.css}">
+    <link rel="stylesheet" th:href="@{/user/css/style.css}">
 </head>
 <body>
 <div class="page-wrapper">
 <th:block th:replace="layout/layoutUser::header"></th:block>
 
 <main class="main">
-    <div class="page-header text-center" style="background-image: url('../../../resources/images/page-header-bg.jpg')">
+    <div class="page-header text-center" style="background-image: url('/user/images/page-header-bg.jpg')">
         <div class="container">
             <h1 class="page-title">Shopping Cart<span>Shop</span></h1>
         </div><!-- End .container -->
@@ -53,61 +53,23 @@
                         <table class="table table-cart table-mobile">
                             <thead>
                             <tr>
+                                <th >Id</th>
                                 <th>Product</th>
-                                <th>Price</th>
+                                <th>User</th>
                                 <th>Quantity</th>
-                                <th>Total</th>
                                 <th></th>
                             </tr>
                             </thead>
 
                             <tbody>
-                            <tr>
-                                <td class="product-col">
-                                    <div class="product">
-                                        <figure class="product-media">
-                                            <a href="#">
-                                                <img th:src="@{/user/assets/images/products/table/product-1.jpg}" alt="Product image">
-                                            </a>
-                                        </figure>
+                            <tr th:each="c: ${shop}">
+                                <td class="product-col" th:text="${c.shoppingCartId}"> </td>
+                                <td  th:text="${c.product}"></td>
+                                <td th:text="${c.user}"></td>
+                                <td   th:text="${c.orderQuantity}"></td>
 
-                                        <h3 class="product-title">
-                                            <a href="#">Beige knitted elastic runner shoes</a>
-                                        </h3><!-- End .product-title -->
-                                    </div><!-- End .product -->
-                                </td>
-                                <td class="price-col">$84.00</td>
-                                <td class="quantity-col">
-                                    <div class="cart-product-quantity">
-                                        <input type="number" class="form-control" value="1" min="1" max="10" step="1" data-decimals="0" required>
-                                    </div><!-- End .cart-product-quantity -->
-                                </td>
-                                <td class="total-col">$84.00</td>
-                                <td class="remove-col"><button class="btn-remove"><i class="icon-close"></i></button></td>
                             </tr>
-                            <tr>
-                                <td class="product-col">
-                                    <div class="product">
-                                        <figure class="product-media">
-                                            <a href="#">
-                                                <img th:src="@{/user/assets/images/products/table/product-2.jpg}" alt="Product image">
-                                            </a>
-                                        </figure>
 
-                                        <h3 class="product-title">
-                                            <a href="#">Blue utility pinafore denim dress</a>
-                                        </h3><!-- End .product-title -->
-                                    </div><!-- End .product -->
-                                </td>
-                                <td class="price-col">$76.00</td>
-                                <td class="quantity-col">
-                                    <div class="cart-product-quantity">
-                                        <input type="number" class="form-control" value="1" min="1" max="10" step="1" data-decimals="0" required>
-                                    </div><!-- End .cart-product-quantity -->
-                                </td>
-                                <td class="total-col">$76.00</td>
-                                <td class="remove-col"><button class="btn-remove"><i class="icon-close"></i></button></td>
-                            </tr>
                             </tbody>
                         </table><!-- End .table table-wishlist -->
 
@@ -311,14 +273,14 @@
 </div><!-- End .modal -->
 
 <!-- Plugins JS File -->
-<script th:src="@{/user/assets/js/jquery.min.js}"></script>
-<script th:src="@{/user/assets/js/bootstrap.bundle.min.js}"></script>
-<script th:src="@{/user/assets/js/jquery.hoverIntent.min.js}"></script>
-<script th:src="@{/user/assets/js/jquery.waypoints.min.js}"></script>
-<script th:src="@{/user/assets/js/superfish.min.js}"></script>
-<script th:src="@{/user/assets/js/owl.carousel.min.js}"></script>
-<script th:src="@{/user/assets/js/bootstrap-input-spinner.js}"></script>
+<script th:src="@{/user/js/jquery.min.js}"></script>
+<script th:src="@{/user/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/user/js/jquery.hoverIntent.min.js}"></script>
+<script th:src="@{/user/js/jquery.waypoints.min.js}"></script>
+<script th:src="@{/user/js/superfish.min.js}"></script>
+<script th:src="@{/user/js/owl.carousel.min.js}"></script>
+<script th:src="@{/user/js/bootstrap-input-spinner.js}"></script>
 <!-- Main JS File -->
-<script th:src="@{/user/assets/js/main.js}"></script>
+<script th:src="@{/user/js/main.js}"></script>
 </body>
 </html>

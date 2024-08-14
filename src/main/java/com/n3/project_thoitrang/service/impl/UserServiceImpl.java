@@ -1,10 +1,11 @@
-package com.n3.project_thoitrang.service;
+package com.n3.project_thoitrang.service.impl;
 
 import com.n3.project_thoitrang.dto.UserDto;
 import com.n3.project_thoitrang.model.entity.Role;
 import com.n3.project_thoitrang.model.entity.User;
 import com.n3.project_thoitrang.repository.IRoleRepository;
 import com.n3.project_thoitrang.repository.IUserRepository;
+import com.n3.project_thoitrang.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
