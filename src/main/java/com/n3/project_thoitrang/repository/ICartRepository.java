@@ -12,4 +12,6 @@ public interface ICartRepository {
     void updateCart(Shoping_Cart shopingCart);
 
     Shoping_Cart findById(Integer id);
+
+
 }
