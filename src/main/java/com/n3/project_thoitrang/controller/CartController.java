@@ -21,15 +21,11 @@ public class CartController {
         return "user/cart";
     }
 
-    @GetMapping("/cart")
+    @GetMapping("cart")
     public String findAll(Model model){
 
         model.addAttribute("shop",cartService.findAll());
         return "user/cart";
     }
-//    @GetMapping("/delete/{id}")
-//    public String deleteCart(@PathVariable Integer id){
-//    cartService.deleteById(id);
-//    return "redirect:/";
-//    }
+
 }
