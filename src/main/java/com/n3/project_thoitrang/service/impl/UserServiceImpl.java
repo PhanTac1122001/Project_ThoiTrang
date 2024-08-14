@@ -11,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 @Service
 public class UserServiceImpl implements IUserService {
@@ -66,5 +67,26 @@ public class UserServiceImpl implements IUserService {
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
 
         userRepository.save(user);
+    }
+
+    @Override
+    public List<User> findAllUser(int page, int size, String search) {
+        return userRepository.findAllUser(page, size, search);
+    }
+
+    @Override
+    public Long totalAllUser(String search) {
+       return userRepository.totalAllUser(search);
+    }
+
+    //sắp xếp
+    @Override
+    public List<User> findAllByOrderByUsernameAsc() {
+        return userRepository.findAllByOrderByUsernameAsc();
+    }
+    //sắp xếp
+    @Override
+    public List<User> findAllByOrderByUsernameDesc() {
+        return userRepository.findAllByOrderByUsernameDesc();
     }
 }
