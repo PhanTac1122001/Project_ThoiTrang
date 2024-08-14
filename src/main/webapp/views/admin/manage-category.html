@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 
-<!-- Mirrored from hotflix.volkovdesign.com/admin/catalog.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Jul 2024 09:43:03 GMT -->
+<!-- Mirrored from hotflix.volkovdesign.com/admin/users.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Jul 2024 09:43:03 GMT -->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/slimselect.css">
-    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" th:href="@{/admin/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/admin/css/slimselect.css}">
+    <link rel="stylesheet" th:href="@{/admin/css/admin.css}">
 
     <!-- Icon font -->
-    <link rel="stylesheet" href="webfont/tabler-icons.min.css">
+    <link rel="stylesheet" th:href="@{/admin/webfont/tabler-icons.min.css}">
 
     <!-- Favicons -->
-    <link rel="icon" type="image/png" href="icon/favicon-32x32.png" sizes="32x32">
-    <link rel="apple-touch-icon" href="icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" th:href="@{/admin/icon/favicon-32x32.png}" sizes="32x32">
+    <link rel="apple-touch-icon" th:href="@{/admin/icon/favicon-32x32.png}">
 
     <meta name="description" content="Online Movies, TV Shows & Cinema HTML Template">
     <meta name="keywords" content="">
@@ -78,11 +78,11 @@
             </li>
 
             <li class="sidebar__nav-item">
-                <a href="catalog.html" class="sidebar__nav-link sidebar__nav-link--active"><i class="ti ti-movie"></i> <span>Catalog</span></a>
+                <a th:href="@{/category}" class="sidebar__nav-link"><i class="ti ti-movie"></i> <span>Catalog</span></a>
             </li>
 
             <li class="sidebar__nav-item">
-                <a href="users.html" class="sidebar__nav-link"><i class="ti ti-users"></i> <span>Users</span></a>
+                <a href="users.html" class="sidebar__nav-link sidebar__nav-link--active"><i class="ti ti-users"></i> <span>Users</span></a>
             </li>
 
             <li class="sidebar__nav-item">
@@ -132,22 +132,22 @@
             <!-- main title -->
             <div class="col-12">
                 <div class="main__title">
-                    <h2>Catalog</h2>
+                    <h2>Users</h2>
 
-                    <span class="main__title-stat">14,452 Total</span>
+                    <span class="main__title-stat">3,702 Total</span>
 
                     <div class="main__title-wrap">
-                        <a href="add-item.html" class="main__title-link main__title-link--wrap">Add item</a>
+                        <a th:href="@{/add_category}"  class="main__title-link main__title-link--wrap" data-bs-target="#modal-user">Add user</a>
 
                         <select class="filter__select" name="sort" id="filter__sort">
                             <option value="0">Date created</option>
-                            <option value="1">Rating</option>
-                            <option value="2">Views</option>
+                            <option value="1">Pricing plan</option>
+                            <option value="2">Status</option>
                         </select>
 
                         <!-- search -->
                         <form action="#" class="main__title-form">
-                            <input type="text" placeholder="Find movie / tv series..">
+                            <input type="text" placeholder="Find user..">
                             <button type="button">
                                 <i class="ti ti-search"></i>
                             </button>
@@ -158,417 +158,38 @@
             </div>
             <!-- end main title -->
 
-            <!-- items -->
+            <!-- users -->
             <div class="col-12">
                 <div class="catalog catalog--1">
                     <table class="catalog__table">
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>TITLE</th>
-                            <th>RATING</th>
-                            <th>CATEGORY</th>
-                            <th>VIEWS</th>
+                            <th>Category Name</th>
+                            <th>Description</th>
                             <th>STATUS</th>
-                            <th>CRAETED DATE</th>
-                            <th>ACTIONS</th>
+                            <th colspan="2">ACTIONS</th>
                         </tr>
                         </thead>
 
                         <tbody>
-                        <tr>
+                        <tr th:each="c : ${categories}" style="color: wheat">
+                            <td th:text="${c.categoryId}"></td>
+                            <td th:text="${c.categoryName}"></td>
+                            <td th:text="${c.description}"></td>
+                            <td th:text="${c.status ? 'Active' : 'Inactive'}"></td>
                             <td>
-                                <div class="catalog__text">11</div>
+                                <a th:href="@{/edit_category}" class="btn btn-warning">Edit</a>
                             </td>
                             <td>
-                                <div class="catalog__text"><a href="#">I Dream in Another Language</a></div>
+                                <a th:href="@{/delete_category}" class="btn btn-success">Delete</a>
                             </td>
-                            <td>
-                                <div class="catalog__text catalog__text--rate">7.9</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text">Movie</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text">1392</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text catalog__text--green">Visible</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text">05.02.2023</div>
-                            </td>
-                            <td>
-                                <div class="catalog__btns">
-                                    <button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--banned" data-bs-target="#modal-status">
-                                        <i class="ti ti-lock"></i>
-                                    </button>
-                                    <a href="#" class="catalog__btn catalog__btn--view">
-                                        <i class="ti ti-eye"></i>
-                                    </a>
-                                    <a href="add-item.html" class="catalog__btn catalog__btn--edit">
-                                        <i class="ti ti-edit"></i>
-                                    </a>
-                                    <button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--delete" data-bs-target="#modal-delete">
-                                        <i class="ti ti-trash"></i>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="catalog__text">12</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text"><a href="#">The Forgotten Road</a></div>
-                            </td>
-                            <td>
-                                <div class="catalog__text catalog__text--rate">7.1</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text">Movie</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text">1093</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text catalog__text--red">Hidden</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text">05.02.2023</div>
-                            </td>
-                            <td>
-                                <div class="catalog__btns">
-                                    <button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--banned" data-bs-target="#modal-status">
-                                        <i class="ti ti-lock"></i>
-                                    </button>
-                                    <a href="#" class="catalog__btn catalog__btn--view">
-                                        <i class="ti ti-eye"></i>
-                                    </a>
-                                    <a href="add-item.html" class="catalog__btn catalog__btn--edit">
-                                        <i class="ti ti-edit"></i>
-                                    </a>
-                                    <button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--delete" data-bs-target="#modal-delete">
-                                        <i class="ti ti-trash"></i>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="catalog__text">13</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text"><a href="#">Whitney</a></div>
-                            </td>
-                            <td>
-                                <div class="catalog__text catalog__text--rate">6.3</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text">TV Series</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text">723</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text catalog__text--green">Visible</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text">04.02.2023</div>
-                            </td>
-                            <td>
-                                <div class="catalog__btns">
-                                    <button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--banned" data-bs-target="#modal-status">
-                                        <i class="ti ti-lock"></i>
-                                    </button>
-                                    <a href="#" class="catalog__btn catalog__btn--view">
-                                        <i class="ti ti-eye"></i>
-                                    </a>
-                                    <a href="add-item.html" class="catalog__btn catalog__btn--edit">
-                                        <i class="ti ti-edit"></i>
-                                    </a>
-                                    <button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--delete" data-bs-target="#modal-delete">
-                                        <i class="ti ti-trash"></i>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="catalog__text">14</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text"><a href="#">Red Sky at Night</a></div>
-                            </td>
-                            <td>
-                                <div class="catalog__text catalog__text--rate">8.4</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text">TV Series</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text">2457</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text catalog__text--green">Visible</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text">04.02.2023</div>
-                            </td>
-                            <td>
-                                <div class="catalog__btns">
-                                    <button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--banned" data-bs-target="#modal-status">
-                                        <i class="ti ti-lock"></i>
-                                    </button>
-                                    <a href="#" class="catalog__btn catalog__btn--view">
-                                        <i class="ti ti-eye"></i>
-                                    </a>
-                                    <a href="add-item.html" class="catalog__btn catalog__btn--edit">
-                                        <i class="ti ti-edit"></i>
-                                    </a>
-                                    <button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--delete" data-bs-target="#modal-delete">
-                                        <i class="ti ti-trash"></i>
-                                    </button>
-                                </div>
-                            </td>
-                        <tr>
-                            <td>
-                                <div class="catalog__text">15</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text"><a href="#">Into the Unknown</a></div>
-                            </td>
-                            <td>
-                                <div class="catalog__text catalog__text--rate">7.9</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text">Movie</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text">5092</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text catalog__text--green">Visible</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text">03.02.2023</div>
-                            </td>
-                            <td>
-                                <div class="catalog__btns">
-                                    <button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--banned" data-bs-target="#modal-status">
-                                        <i class="ti ti-lock"></i>
-                                    </button>
-                                    <a href="#" class="catalog__btn catalog__btn--view">
-                                        <i class="ti ti-eye"></i>
-                                    </a>
-                                    <a href="add-item.html" class="catalog__btn catalog__btn--edit">
-                                        <i class="ti ti-edit"></i>
-                                    </a>
-                                    <button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--delete" data-bs-target="#modal-delete">
-                                        <i class="ti ti-trash"></i>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="catalog__text">16</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text"><a href="#">The Unseen Journey</a></div>
-                            </td>
-                            <td>
-                                <div class="catalog__text catalog__text--rate">7.1</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text">TV Series</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text">2713</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text catalog__text--red">Hidden</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text">03.02.2023</div>
-                            </td>
-                            <td>
-                                <div class="catalog__btns">
-                                    <button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--banned" data-bs-target="#modal-status">
-                                        <i class="ti ti-lock"></i>
-                                    </button>
-                                    <a href="#" class="catalog__btn catalog__btn--view">
-                                        <i class="ti ti-eye"></i>
-                                    </a>
-                                    <a href="add-item.html" class="catalog__btn catalog__btn--edit">
-                                        <i class="ti ti-edit"></i>
-                                    </a>
-                                    <button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--delete" data-bs-target="#modal-delete">
-                                        <i class="ti ti-trash"></i>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="catalog__text">17</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text"><a href="#">Savage Beauty</a></div>
-                            </td>
-                            <td>
-                                <div class="catalog__text catalog__text--rate">6.3</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text">Cartoon</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text">901</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text catalog__text--green">Visible</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text">03.02.2023</div>
-                            </td>
-                            <td>
-                                <div class="catalog__btns">
-                                    <button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--banned" data-bs-target="#modal-status">
-                                        <i class="ti ti-lock"></i>
-                                    </button>
-                                    <a href="#" class="catalog__btn catalog__btn--view">
-                                        <i class="ti ti-eye"></i>
-                                    </a>
-                                    <a href="add-item.html" class="catalog__btn catalog__btn--edit">
-                                        <i class="ti ti-edit"></i>
-                                    </a>
-                                    <button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--delete" data-bs-target="#modal-delete">
-                                        <i class="ti ti-trash"></i>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="catalog__text">18</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text"><a href="#">Endless Horizon</a></div>
-                            </td>
-                            <td>
-                                <div class="catalog__text catalog__text--rate">8.4</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text">Movie</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text">8430</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text catalog__text--green">Visible</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text">02.02.2023</div>
-                            </td>
-                            <td>
-                                <div class="catalog__btns">
-                                    <button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--banned" data-bs-target="#modal-status">
-                                        <i class="ti ti-lock"></i>
-                                    </button>
-                                    <a href="#" class="catalog__btn catalog__btn--view">
-                                        <i class="ti ti-eye"></i>
-                                    </a>
-                                    <a href="add-item.html" class="catalog__btn catalog__btn--edit">
-                                        <i class="ti ti-edit"></i>
-                                    </a>
-                                    <button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--delete" data-bs-target="#modal-delete">
-                                        <i class="ti ti-trash"></i>
-                                    </button>
-                                </div>
-                            </td>
-                        <tr>
-                            <td>
-                                <div class="catalog__text">19</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text"><a href="#">The Lost Key</a></div>
-                            </td>
-                            <td>
-                                <div class="catalog__text catalog__text--rate">7.9</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text">Movie</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text">818</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text catalog__text--green">Visible</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text">02.02.2023</div>
-                            </td>
-                            <td>
-                                <div class="catalog__btns">
-                                    <button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--banned" data-bs-target="#modal-status">
-                                        <i class="ti ti-lock"></i>
-                                    </button>
-                                    <a href="#" class="catalog__btn catalog__btn--view">
-                                        <i class="ti ti-eye"></i>
-                                    </a>
-                                    <a href="add-item.html" class="catalog__btn catalog__btn--edit">
-                                        <i class="ti ti-edit"></i>
-                                    </a>
-                                    <button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--delete" data-bs-target="#modal-delete">
-                                        <i class="ti ti-trash"></i>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="catalog__text">20</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text"><a href="#">Echoes of Yesterday</a></div>
-                            </td>
-                            <td>
-                                <div class="catalog__text catalog__text--rate">7.1</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text">Anime</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text">1046</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text catalog__text--red">Hidden</div>
-                            </td>
-                            <td>
-                                <div class="catalog__text">01.02.2023</div>
-                            </td>
-                            <td>
-                                <div class="catalog__btns">
-                                    <button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--banned" data-bs-target="#modal-status">
-                                        <i class="ti ti-lock"></i>
-                                    </button>
-                                    <a href="#" class="catalog__btn catalog__btn--view">
-                                        <i class="ti ti-eye"></i>
-                                    </a>
-                                    <a href="add-item.html" class="catalog__btn catalog__btn--edit">
-                                        <i class="ti ti-edit"></i>
-                                    </a>
-                                    <button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--delete" data-bs-target="#modal-delete">
-                                        <i class="ti ti-trash"></i>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
+
                         </tbody>
                     </table>
                 </div>
             </div>
-            <!-- end items -->
+            <!-- end users -->
 
             <!-- paginator -->
             <div class="col-12">
@@ -615,6 +236,62 @@
 </main>
 <!-- end main content -->
 
+<!-- user modal -->
+<div class="modal fade" id="modal-user" tabindex="-1" aria-labelledby="modal-user" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal__content">
+                <form action="#" class="modal__form">
+                    <h4 class="modal__title">Add User</h4>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="sign__group">
+                                <label class="sign__label" for="email0">Email</label>
+                                <input id="email0" type="text" name="email0" class="sign__input">
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="sign__group">
+                                <label class="sign__label" for="pass0">Password</label>
+                                <input id="pass0" type="password" name="pass0" class="sign__input">
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="sign__group">
+                                <label class="sign__label" for="subscription">Subscription</label>
+                                <select class="sign__select" id="subscription">
+                                    <option value="Basic">Basic</option>
+                                    <option value="Premium">Premium</option>
+                                    <option value="Cinematic">Cinematic</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="sign__group">
+                                <label class="sign__label" for="rights">Rights</label>
+                                <select class="sign__select" id="rights">
+                                    <option value="User">User</option>
+                                    <option value="Moderator">Moderator</option>
+                                    <option value="Admin">Admin</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6 offset-lg-3">
+                            <button type="button" class="sign__btn sign__btn--modal">Add</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end user modal -->
+
 <!-- status modal -->
 <div class="modal fade" id="modal-status" tabindex="-1" aria-labelledby="modal-status" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -642,9 +319,9 @@
         <div class="modal-content">
             <div class="modal__content">
                 <form action="#" class="modal__form">
-                    <h4 class="modal__title">Item delete</h4>
+                    <h4 class="modal__title">User delete</h4>
 
-                    <p class="modal__text">Are you sure to permanently delete this item?</p>
+                    <p class="modal__text">Are you sure to permanently delete this user?</p>
 
                     <div class="modal__btns">
                         <button class="modal__btn modal__btn--apply" type="button"><span>Delete</span></button>
@@ -658,11 +335,11 @@
 <!-- end delete modal -->
 
 <!-- JS -->
-<script src="js/bootstrap.bundle.min.js"></script>
-<script src="js/slimselect.min.js"></script>
-<script src="js/smooth-scrollbar.js"></script>
-<script src="js/admin.js"></script>
+<script th:src="@{/admin/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/admin/js/slimselect.min.js}"></script>
+<script th:src="@{/admin/js/smooth-scrollbar.js}"></script>
+<script th:src="@{/admin/js/admin.js}"></script>
 </body>
 
-<!-- Mirrored from hotflix.volkovdesign.com/admin/catalog.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Jul 2024 09:43:03 GMT -->
+<!-- Mirrored from hotflix.volkovdesign.com/admin/users.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Jul 2024 09:43:03 GMT -->
 </html>
