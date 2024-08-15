@@ -5,14 +5,13 @@ import com.n3.project_thoitrang.dto.FormRegister;
 import com.n3.project_thoitrang.model.entity.Role;
 import com.n3.project_thoitrang.model.entity.User;
 import com.n3.project_thoitrang.service.ILoginRegisterService;
+import com.n3.project_thoitrang.service.UploadFile;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 
@@ -21,7 +20,7 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 public class LoginRegisterController {
 private final ILoginRegisterService loginRegisterService;
-
+private final UploadFile uploadFile;
     @GetMapping("/login")
     public String viewLogin(Model model)
     {
@@ -64,13 +63,15 @@ private final ILoginRegisterService loginRegisterService;
     }
 
     @PostMapping("/register")
-    public String handleRegister(@Valid @ModelAttribute("formRegister") FormRegister formRegister, BindingResult bindingResult, Model model)
+    public String handleRegister(@Valid @ModelAttribute("formRegister")FormRegister formRegister, BindingResult bindingResult, Model model, @RequestParam("avatarFile") MultipartFile file)
     {
         if (bindingResult.hasErrors())
         {
             model.addAttribute("formRegister", formRegister);
             return "login/register";
         }
+        String urlAvatar = uploadFile.uploadLocal(file);
+        formRegister.setAvatar(urlAvatar);
         loginRegisterService.handleRegister(formRegister);
         FormLogin formLogin = new FormLogin();
         model.addAttribute("formLogin", formLogin);

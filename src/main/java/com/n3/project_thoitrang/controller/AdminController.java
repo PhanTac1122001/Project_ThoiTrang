@@ -41,7 +41,7 @@ public class AdminController {
         return "/admin/manage-account";
     }
 
-    @GetMapping("/sortUserList")
+    @GetMapping("admin/manage-account/sortUserList")
     public String sortByName(Model model,   @RequestParam(value = "sort", defaultValue = "asc") String sort) {
         List<User> user;
         if ("desc".equalsIgnoreCase(sort)) {
@@ -57,7 +57,7 @@ public class AdminController {
         return "/admin/manage-account";
     }
 
-    @RequestMapping("/updateStatus")
+    @RequestMapping("admin/manage-account/updateStatus")
     public String updateController(Model model,@RequestParam Long id) {
         User newUser = userService.findUserById(id);
 //        System.out.println(newUser.getFullname());
