@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 
 <!-- Mirrored from hotflix.volkovdesign.com/admin/users.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Jul 2024 09:43:03 GMT -->
+  
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -82,7 +83,7 @@
             </li>
 
             <li class="sidebar__nav-item">
-                <a th:href="@{/admin/manage-account}"class="sidebar__nav-link"><i class="ti ti-users"></i> <span>Users</span></a>
+
             </li>
 
             <li class="sidebar__nav-item">
@@ -132,12 +133,12 @@
             <!-- main title -->
             <div class="col-12">
                 <div class="main__title">
-                    <h2>Product</h2>
+
 
                     <span class="main__title-stat">3,702 Total</span>
 
                     <div class="main__title-wrap">
-                        <a th:href="@{/add_category}"  class="main__title-link main__title-link--wrap" data-bs-target="#modal-user">Add Category</a>
+                        <a th:href="@{/addProduct}"  class="main__title-link main__title-link--wrap" data-bs-target="#modal-user">Add Product</a>
 
                         <select class="filter__select" name="sort" id="filter__sort">
                             <option value="0">Date created</option>
