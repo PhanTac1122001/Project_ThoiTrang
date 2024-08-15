@@ -27,10 +27,10 @@ public class User {
     @Column(name = "email", nullable = false, length = 255, unique = true)
     private String email;
 
-    @Column(name = "fullname", nullable = false, length = 100)
+    @Column(name = "fullname", length = 100)
     private String fullname;
 
-    @Column(name = "status", nullable = false)
+    @Column(name = "status")
     private boolean status;
 
     @Column(name = "password", nullable = false, length = 255)
@@ -42,18 +42,18 @@ public class User {
     @Column(name = "phone", length = 15, unique = true)
     private String phone;
 
-    @Column(name = "address", nullable = false, length = 255)
+    @Column(name = "address", length = 255)
     private String address;
 
     @Temporal(TemporalType.DATE)
-    @Column(name = "created_at", nullable = false)
+    @Column(name = "created_at")
     private Date createdAt = new Date();
 
     @Temporal(TemporalType.DATE)
     @Column(name = "updated_at")
     private Date updatedAt;
 
-    @Column(name = "is_deleted", nullable = false)
+    @Column(name = "is_deleted")
     private boolean isDeleted = false;
 
     @ManyToMany(fetch = FetchType.EAGER)

@@ -1,9 +1,6 @@
 package com.n3.project_thoitrang.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.Email;
@@ -12,8 +9,8 @@ import javax.validation.constraints.NotEmpty;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+@Data
+@Builder
 public class FormRegister {
 
 
@@ -29,6 +26,10 @@ public class FormRegister {
 
     @NotBlank(message = "Phone is empty!")
     private String phone;
+
+    private String confirmPassword;
+    private String address;
+    private String fullName;
 
 //    @NotBlank(message = "username is empty!")
 

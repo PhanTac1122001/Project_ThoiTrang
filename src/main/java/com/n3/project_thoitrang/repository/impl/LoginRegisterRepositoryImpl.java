@@ -3,7 +3,7 @@ package com.n3.project_thoitrang.repository.impl;
 
 import com.n3.project_thoitrang.dto.FormLogin;
 import com.n3.project_thoitrang.model.entity.User;
-import com.n3.project_thoitrang.repository.ILoginRegister;
+import com.n3.project_thoitrang.repository.ILoginRegisterRepository;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @RequiredArgsConstructor
-public class ILoginRegisterImpl implements ILoginRegister {
+public class LoginRegisterRepositoryImpl implements ILoginRegisterRepository {
     private final SessionFactory sessionFactory;
 
     @Override
