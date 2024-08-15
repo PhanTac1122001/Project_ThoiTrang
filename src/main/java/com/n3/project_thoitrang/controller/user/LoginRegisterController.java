@@ -81,6 +81,6 @@ private final ILoginRegisterService loginRegisterService;
     public String handleLogout()
     {
         loginRegisterService.handleLogout();
-        return "redirect:/";
+        return "index";
     }
 }

@@ -47,26 +47,7 @@
 
 <!-- sidebar -->
 <div class="sidebar">
-    <!-- sidebar logo -->
-    <a href="index.html" class="sidebar__logo">
-        <img src="img/logo.svg" alt="">
-    </a>
-    <!-- end sidebar logo -->
-
-    <!-- sidebar user -->
-    <div class="sidebar__user">
-        <div class="sidebar__user-img">
-            <img src="img/user.svg" alt="">
-        </div>
-
-        <div class="sidebar__user-title">
-            <span>Admin</span>
-            <p>John Doe</p>
-        </div>
-
-        <button class="sidebar__user-btn" type="button">
-            <i class="ti ti-logout"></i>
-        </button>
+    <th:block th:replace="layout/layoutNameAdmin::name-admin"></th:block>
     </div>
     <!-- end sidebar user -->
 
