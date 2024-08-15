@@ -14,7 +14,7 @@ public class RoleRepositoryImpl implements IRoleRepository {
     private final SessionFactory sessionFactory;
 
     @Override
-    public Role findRolesByRoleName(String roleName) {
+    public Role findRolesByRoleName(Role.RoleName roleName) {
         Session session = sessionFactory.openSession();
         try{
             Role role = (Role) session.createQuery("from Role where roleName = :roleName")

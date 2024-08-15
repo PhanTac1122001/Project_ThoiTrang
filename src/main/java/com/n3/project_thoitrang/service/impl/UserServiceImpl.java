@@ -36,7 +36,7 @@ public class UserServiceImpl implements IUserService {
                 .fullname(userDto.getFullName())
                 .build();
         //Gan quyen cho doi tuong users
-        Role roleUser = roleRepository.findRolesByRoleName("ROLE_USER");
+        Role roleUser = roleRepository.findRolesByRoleName(Role.RoleName.USER);
         List<Role> roles = new ArrayList<>();
         roles.add(roleUser);
         user.setRole(roles);
@@ -56,8 +56,8 @@ public class UserServiceImpl implements IUserService {
                 .fullname(userDto.getFullName())
                 .build();
         //Gan quyen cho doi tuong users
-        Role roleUser = roleRepository.findRolesByRoleName("ROLE_USER");
-        Role roleAdmin = roleRepository.findRolesByRoleName("ROLE_ADMIN");
+        Role roleUser = roleRepository.findRolesByRoleName(Role.RoleName.USER);
+        Role roleAdmin = roleRepository.findRolesByRoleName(Role.RoleName.ADMIN);
         List<Role> role = new ArrayList<>();
         role.add(roleUser);
         role.add(roleAdmin);

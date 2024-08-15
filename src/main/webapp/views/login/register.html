@@ -571,11 +571,11 @@
                         <ul class="nav nav-pills nav-fill" role="tablist">
 
                             <li class="nav-item">
-                                <a class="nav-link active" id="register-tab-2" data-toggle="tab" href="#register-2" role="tab" aria-controls="register-2" aria-selected="true">Register</a>
+                                <a class="nav-link active" id="register-tab-2"  role="tab" aria-controls="register-2" aria-selected="true">Register</a>
                             </li>
                         </ul>
                         <div class="tab-content">
-                            <div class="tab-pane fade" id="signin-2" role="tabpanel" aria-labelledby="signin-tab-2">
+                            <div class="tab-pane fade"  role="tabpanel" aria-labelledby="signin-tab-2">
 
                                 <div class="form-choice">
                                     <p class="text-center">or sign in with</p>
@@ -596,27 +596,41 @@
                                 </div><!-- End .form-choice -->
                             </div><!-- .End .tab-pane -->
                             <div class="tab-pane fade show active" id="register-2" role="tabpanel" aria-labelledby="register-tab-2">
-                                <form action="#">
-
+                                <form class="login-container" th:action="@{/login-register/register}" method="post" th:object="${formRegister}">
                                     <div class="form-group">
-                                        <label for="register-username-2">Your username *</label>
-                                        <input type="text" class="form-control" id="register-username-2" name="register-email" required>
+                                        <label >Your Full Name *</label>
+                                        <input type="text" class="form-control"  name="fullName"  required>
+                                        <!-- <small th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></small>-->
                                     </div><!-- End .form-group -->
                                     <div class="form-group">
-                                        <label for="register-password-2">Password *</label>
-                                        <input type="password" class="form-control" id="register-password-2" name="register-password" required>
+                                        <label>Your username *</label>
+                                        <input type="text" class="form-control"  name="username"  required>
+<!--                                        <small th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></small>-->
                                     </div><!-- End .form-group -->
                                     <div class="form-group">
-                                        <label for="register-cfpassword-2">Confirm Password *</label>
-                                        <input type="password" class="form-control" id="register-cfpassword-2" name="register-password" required>
+                                        <label >Password *</label>
+                                        <input type="password" class="form-control"  name="password" required>
+<!--                                        <small th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></small>-->
                                     </div><!-- End .form-group -->
                                     <div class="form-group">
-                                        <label for="register-email-2">Your email address *</label>
-                                        <input type="email" class="form-control" id="register-email-2" name="register-email" required>
+                                        <label>Confirm Password *</label>
+                                        <input type="password" class="form-control"  name="confirmPassword" required>
+<!--                                        <small th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></small>-->
                                     </div><!-- End .form-group -->
                                     <div class="form-group">
-                                        <label for="register-phone-2">Your phone *</label>
-                                        <input type="text" class="form-control" id="register-phone-2" name="register-email" required>
+                                        <label>Your email *</label>
+                                        <input type="email" class="form-control"  name="email" required>
+<!--                                        <small th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>-->
+                                    </div><!-- End .form-group -->
+                                    <div class="form-group">
+                                        <label >Your Address *</label>
+                                        <input type="text" class="form-control"  name="address"  required>
+                                        <!--                                        <small th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></small>-->
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Your phone *</label>
+                                        <input type="text" class="form-control"  name="phone" required>
+<!--                                       <small th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></small>-->
                                     </div><!-- End .form-group -->
                                     <div class="form-footer">
                                         <button type="submit" class="btn btn-outline-primary-2">

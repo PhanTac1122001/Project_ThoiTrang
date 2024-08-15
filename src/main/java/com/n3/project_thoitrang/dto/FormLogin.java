@@ -20,10 +20,10 @@ public class FormLogin {
     @NotBlank(message = "Username is empty!")
     private String password;
 
-    @NotBlank(message = "Username is empty!")
+//    @NotBlank(message = "Username is empty!")
     private String fullName;
 
-    @NotBlank(message = "Username is empty!")
-    @Email(message = "Email not valid")
+//    @NotBlank(message = "Username is empty!")
+//    @Em/ail(message = "Email not valid")
     private String email;
 }
