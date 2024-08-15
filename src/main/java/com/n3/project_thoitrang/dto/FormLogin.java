@@ -12,15 +12,17 @@ import javax.validation.constraints.NotBlank;
 @NoArgsConstructor
 @Getter
 @Setter
-public class UserDto {
+public class FormLogin {
+
     @NotBlank(message = "Username is empty!")
     private String userName;
+
     @NotBlank(message = "Username is empty!")
     private String password;
+
     @NotBlank(message = "Username is empty!")
     private String fullName;
-    @NotBlank(message = "Username is empty!")
-    private String address;
+
     @NotBlank(message = "Username is empty!")
     @Email(message = "Email not valid")
     private String email;

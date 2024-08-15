@@ -7,6 +7,9 @@ import java.util.List;
 public interface IUserRepository {
     User findUsersByUserName(String userName);
     User save(User user);
+
+    User findUserById(Long id);
+
     //phân trang, search
     List<User> findAllUser(int page, int size, String search);
 

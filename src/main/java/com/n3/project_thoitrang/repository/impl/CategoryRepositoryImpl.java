@@ -57,7 +57,7 @@ public class CategoryRepositoryImpl implements ICategoryRepository {
     }
 
     @Override
-    public void save(Category category)
+    public boolean save(Category category)
     {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
@@ -72,6 +72,7 @@ public class CategoryRepositoryImpl implements ICategoryRepository {
                 session.update(category);
             }
             transaction.commit();
+            return true;
         }
         catch (Exception e)
         {
