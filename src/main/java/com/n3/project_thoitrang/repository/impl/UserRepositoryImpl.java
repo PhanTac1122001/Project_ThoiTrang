@@ -1,5 +1,6 @@
 package com.n3.project_thoitrang.repository.impl;
 
+import com.n3.project_thoitrang.model.entity.Shoping_Cart;
 import com.n3.project_thoitrang.model.entity.User;
 import com.n3.project_thoitrang.repository.IUserRepository;
 import org.hibernate.Session;
@@ -78,6 +79,19 @@ public class UserRepositoryImpl implements IUserRepository {
         } catch (Exception e) {
             throw new RuntimeException(e);
         } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public List<User> findAll() {
+        Session session=sessionFactory.openSession();
+        try {
+            return session.createQuery("select u from User as u", User.class).getResultList();
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+        finally {
             session.close();
         }
     }

@@ -65,7 +65,7 @@ public class AdminController {
         userService.save(newUser);
         return "redirect:/admin/manage-account";
     }
-    @GetMapping("/dashboard")
+    @RequestMapping("/dashboard")
     public String dashboard(){
         return "admin/dashboard";
     }
