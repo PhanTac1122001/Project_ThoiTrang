@@ -32,7 +32,7 @@ public class UserServiceImpl implements IUserService {
         User user = User.builder()
                 .email(userDto.getEmail())
                 .username(userDto.getUserName())
-                .address(userDto.getAddress())
+//                .address(userDto.getAddress())
                 .fullname(userDto.getFullName())
                 .build();
         //Gan quyen cho doi tuong users
@@ -52,7 +52,7 @@ public class UserServiceImpl implements IUserService {
         User user = User.builder()
                 .email(userDto.getEmail())
                 .username(userDto.getUserName())
-                .address(userDto.getAddress())
+//                .address(userDto.getAddress())
                 .fullname(userDto.getFullName())
                 .build();
         //Gan quyen cho doi tuong users

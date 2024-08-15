@@ -13,13 +13,13 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
-@RequestMapping("/admin/manage-account")
+@RequestMapping()
 @RequiredArgsConstructor
 public class AdminController {
     private final HttpSession session;
     private final IUserService userService;
 
-    @GetMapping
+    @GetMapping("admin/manage-account")
     public String viewUser(
             @RequestParam(name = "page", defaultValue = "0") Integer page,
             @RequestParam(name = "size", defaultValue = "5") Integer size,
@@ -64,5 +64,9 @@ public class AdminController {
         newUser.setStatus(!newUser.isStatus());
         userService.save(newUser);
         return "redirect:/admin/manage-account";
+    }
+    @GetMapping("/dashboard")
+    public String dashboard(){
+        return "admin/dashboard";
     }
 }
