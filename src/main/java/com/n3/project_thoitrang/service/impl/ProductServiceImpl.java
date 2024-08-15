@@ -45,7 +45,8 @@ public class ProductServiceImpl implements IProductService {
         return Collections.emptyList();
     }
 
-
-
-
+    @Override
+    public Product findById(Long proId) {
+        return productRepository.findById(proId);
+    }
 }

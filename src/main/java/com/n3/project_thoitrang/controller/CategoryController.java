@@ -71,7 +71,7 @@ public class CategoryController {
 
 
     @GetMapping("/delete/{id}")
-    public String deleteAccount(@PathVariable Long id)
+    public String deleteCategory(@PathVariable Long id)
     {
         categoryService.deleteById(id);
         return "redirect:/category";

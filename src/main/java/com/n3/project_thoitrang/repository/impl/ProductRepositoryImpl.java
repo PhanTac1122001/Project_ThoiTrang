@@ -1,5 +1,6 @@
 package com.n3.project_thoitrang.repository.impl;
 
+import com.n3.project_thoitrang.model.entity.Category;
 import com.n3.project_thoitrang.model.entity.Product;
 import com.n3.project_thoitrang.repository.IProductRepository;
 import lombok.RequiredArgsConstructor;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -20,7 +22,7 @@ public class ProductRepositoryImpl implements IProductRepository {
     public List<Product> findAll() {
         Session session = sessionFactory.openSession();
         try{
-            List list = session.createQuery("from Product",Product.class).getResultList();
+            List<Product> list = session.createQuery("select p from Product p",Product.class).getResultList();
             return list;
         }catch (Exception ex){
             ex.printStackTrace();
@@ -53,8 +55,16 @@ public class ProductRepositoryImpl implements IProductRepository {
         Session session = sessionFactory.openSession();
         try{
             session.beginTransaction();
-            session.save(pro);
+            pro.setCreatedAt(new Date());
+            pro.setUpdatedAt(new Date());
+            if (pro.getProductId()==null){
+                session.save(pro);
+
+            }else {
+                session.update(pro);
+            }
             session.getTransaction().commit();
+
             return true;
         }catch (Exception ex){
             ex.printStackTrace();
@@ -70,6 +80,7 @@ public class ProductRepositoryImpl implements IProductRepository {
         Session session = sessionFactory.openSession();
         try{
             session.beginTransaction();
+            pro.setUpdatedAt(new Date());
             session.update(pro);
             session.getTransaction().commit();
             return true;
@@ -117,5 +128,24 @@ public class ProductRepositoryImpl implements IProductRepository {
             session.close();
         }
         return null;
+    }
+
+    @Override
+    public Product findById(Long id)
+    {
+        Session session = sessionFactory.openSession();
+        try
+        {
+            // HQL - Hibernate Query Language
+            return session.get(Product.class, id);
+        }
+        catch (Exception e)
+        {
+            throw new RuntimeException(e);
+        }
+        finally
+        {
+            session.close();
+        }
     }
 }
