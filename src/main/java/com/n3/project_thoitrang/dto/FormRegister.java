@@ -27,9 +27,16 @@ public class FormRegister {
     @NotBlank(message = "Phone is empty!")
     private String phone;
 
+    @NotBlank(message = "confirmPassword is empty!")
     private String confirmPassword;
+
+    @NotBlank(message = "address is empty")
     private String address;
+
+    @NotBlank(message = "full name is empty")
     private String fullName;
+
+    private String avatar;
 
 //    @NotBlank(message = "username is empty!")
 

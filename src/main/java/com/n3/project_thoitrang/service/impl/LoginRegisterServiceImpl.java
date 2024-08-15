@@ -45,6 +45,7 @@ private final ILoginRegisterRepository loginRegisterRepository;
                 .phone(formRegister.getPhone())
                 .address(formRegister.getAddress())
                 .fullname(formRegister.getFullName())
+                .avatar(formRegister.getAvatar())
                 .updatedAt(new Date())
                 .createdAt(new Date())
                 .build();

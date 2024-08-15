@@ -215,7 +215,7 @@
                                 <div class="catalog__text" th:text="${u.userId}"></div>
                             </td>
                             <td class="catalog__text">
-                                <img th:src="${u.avatar}" width="50px" height="50px" alt="">
+                                <img th:src="@{${u.avatar}}" width="50px" height="50px" alt="" />
                             </td>
                             <td>
                                 <div class="catalog__user">
