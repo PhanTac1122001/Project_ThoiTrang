@@ -20,7 +20,7 @@ public class AdminController {
     private final IUserService userService;
 
     @GetMapping
-    public String viewBarber(
+    public String viewUser(
             @RequestParam(name = "page", defaultValue = "0") Integer page,
             @RequestParam(name = "size", defaultValue = "5") Integer size,
             @RequestParam(name = "search", defaultValue = "") String search,
@@ -55,5 +55,14 @@ public class AdminController {
         model.addAttribute("size",5);
 
         return "/admin/manage-account";
+    }
+
+    @RequestMapping("/updateStatus")
+    public String updateController(Model model,@RequestParam Long id) {
+        User newUser = userService.findUserById(id);
+//        System.out.println(newUser.getFullname());
+        newUser.setStatus(!newUser.isStatus());
+        userService.save(newUser);
+        return "redirect:/admin/manage-account";
     }
 }

@@ -10,6 +10,7 @@
         <entry key="file://$PROJECT_DIR$/src/main/webapp/views/general/add-category.html" value="file://$PROJECT_DIR$/src/main/webapp/views/general" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/views/general/edit-category.html" value="file://$PROJECT_DIR$/src/main/webapp/views/general" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/views/index.html" value="file://$PROJECT_DIR$/src/main/webapp/views" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/views/login/login.html" value="file://$PROJECT_DIR$/src/main/webapp/views/login" />
       </map>
     </option>
   </component>

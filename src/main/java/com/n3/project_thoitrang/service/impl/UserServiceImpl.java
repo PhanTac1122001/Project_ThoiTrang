@@ -1,6 +1,6 @@
 package com.n3.project_thoitrang.service.impl;
 
-import com.n3.project_thoitrang.dto.UserDto;
+import com.n3.project_thoitrang.dto.FormLogin;
 import com.n3.project_thoitrang.model.entity.Role;
 import com.n3.project_thoitrang.model.entity.User;
 import com.n3.project_thoitrang.repository.IRoleRepository;
@@ -11,7 +11,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 @Service
 public class UserServiceImpl implements IUserService {
@@ -28,7 +27,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public void saveUser(UserDto userDto) {
+    public void saveUser(FormLogin userDto) {
         //Chuyen doi tu userDto ve doi tuong Users de save vao database
         User user = User.builder()
                 .email(userDto.getEmail())
@@ -48,7 +47,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public void saveAdmin(UserDto userDto) {
+    public void saveAdmin(FormLogin userDto) {
         //Chuyen doi tu userDto ve doi tuong Users de save vao database
         User user = User.builder()
                 .email(userDto.getEmail())
@@ -88,5 +87,15 @@ public class UserServiceImpl implements IUserService {
     @Override
     public List<User> findAllByOrderByUsernameDesc() {
         return userRepository.findAllByOrderByUsernameDesc();
+    }
+
+    @Override
+    public User findUserById(Long id) {
+        return userRepository.findUserById(id);
+    }
+
+    @Override
+    public User save(User user) {
+        return userRepository.save(user);
     }
 }

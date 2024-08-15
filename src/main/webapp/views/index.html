@@ -54,7 +54,7 @@
 
                 <div class="header-right">
                     <div class="social-icons social-icons-color">
-                        <a href="#" class="social-icon social-facebook" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
+                        <a th:href="@{admin/manage-account}" class="social-icon social-facebook" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
                         <a href="#" class="social-icon social-twitter" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
                         <a href="#" class="social-icon social-pinterest" title="Instagram" target="_blank"><i class="icon-pinterest-p"></i></a>
                         <a href="#" class="social-icon social-instagram" title="Pinterest" target="_blank"><i class="icon-instagram"></i></a>
@@ -63,7 +63,7 @@
                         <li>
                             <a href="#">Links</a>
                             <ul>
-                                <li><a th:href="@{admin/manage-account}" data-toggle="modal"><i class="icon-user"></i>Login</a></li>
+                                <li><a th:href="@{login}" data-toggle="modal"><i class="icon-user"></i>Login</a></li>
                             </ul>
                         </li>
                     </ul><!-- End .top-menu -->
