@@ -82,7 +82,7 @@
             </li>
 
             <li class="sidebar__nav-item">
-                <a href="users.html" class="sidebar__nav-link sidebar__nav-link--active"><i class="ti ti-users"></i> <span>Users</span></a>
+                <a href="users.html" class="sidebar__nav-link sidebar__nav-link--active"><i class="ti ti-users"></i> <span>Categories</span></a>
             </li>
 
             <li class="sidebar__nav-item">
@@ -132,12 +132,12 @@
             <!-- main title -->
             <div class="col-12">
                 <div class="main__title">
-                    <h2>Users</h2>
+                    <h2>Categories</h2>
 
                     <span class="main__title-stat">3,702 Total</span>
 
                     <div class="main__title-wrap">
-                        <a th:href="@{/add_category}"  class="main__title-link main__title-link--wrap" data-bs-target="#modal-user">Add user</a>
+                        <a th:href="@{/add_category}"  class="main__title-link main__title-link--wrap" data-bs-target="#modal-user">Add Category</a>
 
                         <select class="filter__select" name="sort" id="filter__sort">
                             <option value="0">Date created</option>
@@ -179,10 +179,10 @@
                             <td th:text="${c.description}"></td>
                             <td th:text="${c.status ? 'Active' : 'Inactive'}"></td>
                             <td>
-                                <a th:href="@{/edit_category}" class="btn btn-warning">Edit</a>
+                                <a th:href="@{/edit/{id}(id=${c.categoryId})}" class="btn btn-warning">Edit</a>
                             </td>
                             <td>
-                                <a th:href="@{/delete_category}" class="btn btn-success">Delete</a>
+                                <a th:href="@{/delete/{id}(id=${c.categoryId})}" class="btn btn-success">Delete</a>
                             </td>
 
                         </tbody>

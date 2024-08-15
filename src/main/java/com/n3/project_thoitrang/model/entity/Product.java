@@ -37,5 +37,6 @@ public class Product {
     @Column(name = "updated_at")
     private Date updatedAt;
 
+
     // Getters and Setters
 }

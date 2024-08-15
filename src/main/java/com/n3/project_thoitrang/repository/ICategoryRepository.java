@@ -13,7 +13,7 @@ public interface ICategoryRepository {
     Category findById(Long id);
 
     // 3. thêm mới hoặc update
-    void save(Category category);
+    boolean save(Category category);
 
     // 4. Xóa
     void deleteById(Long id);

@@ -132,22 +132,24 @@
             <!-- main title -->
             <div class="col-12">
                 <div class="main__title">
-                    <h2>Add new item</h2>
+                    <h2>Edit Category</h2>
                 </div>
             </div>
             <!-- end main title -->
 
             <!-- form -->
             <div class="col-12">
-                <form th:action="@{/add_category}" method="post" th:object="${category}" class="sign__form sign__form--add">
+                <form th:action="@{/pro}" method="post" th:object="${products}" class="sign__form sign__form--add">
                     <div class="row">
                         <div class="col-12 col-xl-7">
                             <div class="row">
                                 <div class="col-12">
                                     <div class="sign__group">
+                                        <input type="hidden" th:field="*{productId}">
 
-                                        <input type="text" class="form-control sign__input" id="category_name" th:field="*{name}" placeholder="Category Name">
-                                        <small th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></small>
+
+                                        <input type="text" class="form-control sign__input" id="product_name" th:field="*{productName}" placeholder="Product Name">
+                                        <small th:if="${#fields.hasErrors('pro')}" th:errors="*{productName}" class="text-danger"></small>
                                     </div>
                                 </div>
 
@@ -158,31 +160,45 @@
                                 </div>
 
 
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-xl-5">
-                            <div class="row">
-                                <div class="col-12 col-md-6">
+                                <div class="col-12">
                                     <div class="sign__group">
-                                        <label class="sign__label">Status:</label>
-                                        <ul class="sign__radio">
-                                            <li>
-                                                <input id="statusVisible" type="radio" th:field="*{status}" value="true" />
-                                                <label for="statusVisible">Active</label>
-                                            </li>
-                                            <li>
-                                                <input id="statusHidden" type="radio" th:field="*{status}" value="false" />
-                                                <label for="statusHidden">Inactive</label>
+                                        <label class="sign__label" for="subscription">Danh mục</label>
+                                        <select class="sign__select" id="subscription" th:field="*{category.categoryId}">
+                                            <option th:each="c : ${categories}"  th:value="${c.categoryId}" th:text = "${c.categoryName}">
 
-                                            </li>
-                                        </ul>
+                                            </option>
 
+                                        </select>
                                     </div>
-
                                 </div>
+
+
+
                             </div>
                         </div>
+
+<!--                        <div class="col-12 col-xl-5">-->
+<!--                            <div class="row">-->
+<!--                                <div class="col-12 col-md-6">-->
+<!--                                    <div class="sign__group">-->
+<!--                                        <label class="sign__label">Status:</label>-->
+<!--                                        <ul class="sign__radio">-->
+<!--                                            <li>-->
+<!--                                                <input id="statusVisible" type="radio" th:field="*{status}" value="true" />-->
+<!--                                                <label for="statusVisible">Active</label>-->
+<!--                                            </li>-->
+<!--                                            <li>-->
+<!--                                                <input id="statusHidden" type="radio" th:field="*{status}" value="false" />-->
+<!--                                                <label for="statusHidden">Inactive</label>-->
+
+<!--                                            </li>-->
+<!--                                        </ul>-->
+
+<!--                                    </div>-->
+
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
 
 
                         <!-- tv series -->
@@ -190,7 +206,7 @@
                         <!-- end tv series -->
 
                         <div class="col-12">
-                            <button type="submit" class="sign__btn sign__btn--small"><span>Publish</span></button>
+                            <button type="submit" class="sign__btn sign__btn--small"><span>Update</span></button>
                         </div>
                     </div>
                 </form>
@@ -209,4 +225,4 @@
 </body>
 
 <!-- Mirrored from hotflix.volkovdesign.com/admin/add-item.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Jul 2024 09:43:03 GMT -->
-</html>
+</html>`
