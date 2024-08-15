@@ -93,18 +93,7 @@
         </div>
         <div class="header-middle">
             <div class="container">
-                <div class="header-left">
-                    <div class="header-search header-search-extended header-search-visible d-none d-lg-block">
-                        <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
-                        <form action="#" method="get">
-                            <div class="header-search-wrapper search-wrapper-wide">
-                                <label for="q" class="sr-only">Search</label>
-                                <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
-                                <input type="search" class="form-control" name="q" id="q" placeholder="Search product ..." required>
-                            </div><!-- End .header-search-wrapper -->
-                        </form>
-                    </div><!-- End .header-search -->
-                </div>
+
                 <div class="header-center">
                     <a href="index-32.html" class="logo">
                         <img th:src="@{/user/images/demos/demo-6/logo.png}" alt="Molla Logo" width="82" height="20">
@@ -122,7 +111,7 @@
                         <a th:href="@{cart}" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
                             <i class="icon-shopping-cart"></i>
                             <span class="cart-count">2</span>
-                            <span class="cart-txt">$ 164,00</span>
+
                         </a>
 
 
@@ -369,7 +358,7 @@
                                 </div><!-- End .megamenu -->
                             </li>
                             <li>
-                                <a href="category.html" class="sf-with-ul">Shop</a>
+                                <a href="" class="sf-with-ul">Shop</a>
 
                                 <div class="megamenu megamenu-md">
                                     <div class="row no-gutters">
@@ -558,7 +547,19 @@
                 </div><!-- End .header-left -->
 
                 <div class="header-right">
-                    <i class="la la-lightbulb-o"></i><p>Clearance Up to 30% Off</span></p>
+
+                        <div class="header-search header-search-extended header-search-visible d-none d-lg-block">
+                            <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
+                            <form action="#" method="get">
+                                <div class="header-search-wrapper search-wrapper-wide">
+
+
+                                    <input type="search" style="background-color: #222222;color: white; " class="form-control " name="q" id="q" placeholder="Search product ..." required>
+                                    <button class="btn btn-primary" style="background-color: #222222;color: white" type="submit"><i class="icon-search"></i></button>
+                                </div><!-- End .header-search-wrapper -->
+                            </form>
+                        </div><!-- End .header-search -->
+
                 </div>
             </div><!-- End .container -->
         </div><!-- End .header-bottom -->
