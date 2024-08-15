@@ -138,7 +138,7 @@
                     <span class="main__title-stat">3,702 Total</span>
 
                     <div class="main__title-wrap">
-                        <a th:href="@{/addProduct}"  class="main__title-link main__title-link--wrap" data-bs-target="#modal-user">Add Product</a>
+                        <a th:href="@{/add}"  class="main__title-link main__title-link--wrap" data-bs-target="#modal-user">Add Product</a>
 
                         <select class="filter__select" name="sort" id="filter__sort">
                             <option value="0">Date created</option>
@@ -180,14 +180,14 @@
                             <td th:text="${loop.count}"></td>
                             <td th:text="${p.productName}"></td>
                             <td th:text="${p.description}"></td>
-                            <td th:text="${p.category}"></td>
+                            <td th:text="${p.getCategory().getCategoryName()}"></td>
                             <td th:text="${p.createdAt}"></td>
                             <td th:text="${p.updatedAt}"></td>
                             <td>
-                                <a th:href="@{/edit/{id}(id=${p.productId})}" class="btn btn-warning">Edit</a>
+                                <a th:href="@{/editProduct/{id}(id=${p.productId})}" class="btn btn-warning">Edit</a>
                             </td>
                             <td>
-                                <a th:href="@{/delete/{id}(id=${p.productName})}" class="btn btn-success">Delete</a>
+                                <a th:href="@{/deleteProduct/{product_id}(product_id=${p.productId})}" class="btn btn-success">Delete</a>
                             </td>
 
                         </tbody>

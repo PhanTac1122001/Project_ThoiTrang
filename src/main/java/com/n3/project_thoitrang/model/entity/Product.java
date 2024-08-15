@@ -1,6 +1,7 @@
 package com.n3.project_thoitrang.model.entity;
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -30,11 +31,13 @@ public class Product {
     private Category category;
 
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "created_at", nullable = false)
     private Date createdAt = new Date();
 
     @Temporal(TemporalType.DATE)
     @Column(name = "updated_at")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updatedAt;
 
 

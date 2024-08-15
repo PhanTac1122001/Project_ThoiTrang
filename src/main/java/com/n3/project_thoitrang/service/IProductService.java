@@ -11,5 +11,6 @@ public interface IProductService {
     boolean update(Product pro);
     boolean delete(Long proId);
     List<Product> findByName(String proName);
+    Product findById(Long proId);
 
 }

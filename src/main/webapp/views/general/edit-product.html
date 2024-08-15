@@ -132,24 +132,24 @@
             <!-- main title -->
             <div class="col-12">
                 <div class="main__title">
-                    <h2>Edit Category</h2>
+                    <h2>Edit Product</h2>
                 </div>
             </div>
             <!-- end main title -->
 
             <!-- form -->
             <div class="col-12">
-                <form th:action="@{/edit}" method="post" th:object="${cate}" class="sign__form sign__form--add">
+                <form th:action="@{'/editProduct/'+${p.productId}}" method="post" th:object="${p}" class="sign__form sign__form--add">
                     <div class="row">
                         <div class="col-12 col-xl-7">
                             <div class="row">
                                 <div class="col-12">
                                     <div class="sign__group">
-                                        <input type="hidden" th:field="*{categoryId}">
+                                        <input type="hidden" th:field="*{productId}">
 
 
-                                        <input type="text" class="form-control sign__input" id="category_name" th:field="*{categoryName}" placeholder="Category Name">
-                                        <small th:if="${#fields.hasErrors('categoryName')}" th:errors="*{categoryName}" class="text-danger"></small>
+                                        <input type="text" class="form-control sign__input" id="product_name" th:field="*{productName}" placeholder="Product Name">
+                                        <small th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}" class="text-danger"></small>
                                     </div>
                                 </div>
 
@@ -160,31 +160,57 @@
                                 </div>
 
 
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-xl-5">
-                            <div class="row">
-                                <div class="col-12 col-md-6">
+                                <div class="col-12">
                                     <div class="sign__group">
-                                        <label class="sign__label">Status:</label>
-                                        <ul class="sign__radio">
-                                            <li>
-                                                <input id="statusVisible" type="radio" th:field="*{status}" value="true" />
-                                                <label for="statusVisible">Active</label>
-                                            </li>
-                                            <li>
-                                                <input id="statusHidden" type="radio" th:field="*{status}" value="false" />
-                                                <label for="statusHidden">Inactive</label>
+                                        <label class="sign__label" for="subscription">Danh mục</label>
+                                        <select class="sign__select" id="subscription" th:field="*{category.categoryId}">
+                                            <option th:each="c : ${categories}"  th:value="${c.categoryId}" th:text = "${c.categoryName}">
 
-                                            </li>
-                                        </ul>
+                                            </option>
 
+                                        </select>
                                     </div>
-
                                 </div>
+
+<!--                                <div class="col-12">-->
+<!--                                    <div class="sign__group">-->
+<!--                                        <input id="created_date" type="date" size="10px" class="sign__textarea form-control"  th:field="*{createdAt}" placeholder="ngày tạo"></input>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+
+<!--                                <div class="col-12">-->
+<!--                                    <div class="sign__group">-->
+<!--                                        <input id="update_date" type="date" size="10px" class="sign__textarea form-control"  th:field="*{updatedAt}" placeholder="ngày sửa"></input>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+
+
+
                             </div>
                         </div>
+
+                        <!--                        <div class="col-12 col-xl-5">-->
+                        <!--                            <div class="row">-->
+                        <!--                                <div class="col-12 col-md-6">-->
+                        <!--                                    <div class="sign__group">-->
+                        <!--                                        <label class="sign__label">Status:</label>-->
+                        <!--                                        <ul class="sign__radio">-->
+                        <!--                                            <li>-->
+                        <!--                                                <input id="statusVisible" type="radio" th:field="*{status}" value="true" />-->
+                        <!--                                                <label for="statusVisible">Active</label>-->
+                        <!--                                            </li>-->
+                        <!--                                            <li>-->
+                        <!--                                                <input id="statusHidden" type="radio" th:field="*{status}" value="false" />-->
+                        <!--                                                <label for="statusHidden">Inactive</label>-->
+
+                        <!--                                            </li>-->
+                        <!--                                        </ul>-->
+
+                        <!--                                    </div>-->
+
+                        <!--                                </div>-->
+                        <!--                            </div>-->
+                        <!--                        </div>-->
 
 
                         <!-- tv series -->
@@ -211,4 +237,4 @@
 </body>
 
 <!-- Mirrored from hotflix.volkovdesign.com/admin/add-item.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Jul 2024 09:43:03 GMT -->
-</html>
+</html>`
