@@ -6,6 +6,9 @@
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/index-admin.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/views/admin/index-admin.html" value="file://$PROJECT_DIR$/src/main/webapp/views/admin" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/views/admin/manage-category.html" value="file://$PROJECT_DIR$/src/main/webapp/views/admin" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/views/general/add-category.html" value="file://$PROJECT_DIR$/src/main/webapp/views/general" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/views/general/edit-category.html" value="file://$PROJECT_DIR$/src/main/webapp/views/general" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/views/index.html" value="file://$PROJECT_DIR$/src/main/webapp/views" />
       </map>
     </option>

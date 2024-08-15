@@ -26,7 +26,7 @@ public class CategoryController {
     @GetMapping("/add_category")
     public String viewAdd(Model model)
     {
-        model.addAttribute("category", new CategoryDto());
+        model.addAttribute("category",  new CategoryDto());
         return "general/add-category";
     }
 
@@ -54,7 +54,7 @@ public class CategoryController {
         Category cate = categoryService.findById(id);
         model.addAttribute("cate", cate);
 
-        return "general/edit-category";
+        return "general/edit_category";
     }
 
     @PostMapping("/edit")
@@ -62,10 +62,10 @@ public class CategoryController {
         if (result.hasErrors())
         {
             model.addAttribute("cate", cate);
-            return "general/edit-category";
+            return "general/edit_category";
         }
         categoryService.save(cate);
-        return "redirect:/admin/manage-category";
+        return "redirect:/category";
 
     }
 
@@ -74,7 +74,7 @@ public class CategoryController {
     public String deleteAccount(@PathVariable Long id)
     {
         categoryService.deleteById(id);
-        return "redirect:/admin/manage-category";
+        return "redirect:/category";
     }
 
 

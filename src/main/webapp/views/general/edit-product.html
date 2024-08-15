@@ -132,22 +132,24 @@
             <!-- main title -->
             <div class="col-12">
                 <div class="main__title">
-                    <h2>Add new item</h2>
+                    <h2>Edit Category</h2>
                 </div>
             </div>
             <!-- end main title -->
 
             <!-- form -->
             <div class="col-12">
-                <form th:action="@{/add_category}" method="post" th:object="${category}" class="sign__form sign__form--add">
+                <form th:action="@{/edit}" method="post" th:object="${cate}" class="sign__form sign__form--add">
                     <div class="row">
                         <div class="col-12 col-xl-7">
                             <div class="row">
                                 <div class="col-12">
                                     <div class="sign__group">
+                                        <input type="hidden" th:field="*{categoryId}">
 
-                                        <input type="text" class="form-control sign__input" id="category_name" th:field="*{name}" placeholder="Category Name">
-                                        <small th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></small>
+
+                                        <input type="text" class="form-control sign__input" id="category_name" th:field="*{categoryName}" placeholder="Category Name">
+                                        <small th:if="${#fields.hasErrors('categoryName')}" th:errors="*{categoryName}" class="text-danger"></small>
                                     </div>
                                 </div>
 
@@ -190,7 +192,7 @@
                         <!-- end tv series -->
 
                         <div class="col-12">
-                            <button type="submit" class="sign__btn sign__btn--small"><span>Publish</span></button>
+                            <button type="submit" class="sign__btn sign__btn--small"><span>Update</span></button>
                         </div>
                     </div>
                 </form>
