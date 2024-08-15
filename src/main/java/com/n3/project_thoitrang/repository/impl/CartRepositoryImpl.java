@@ -29,7 +29,7 @@ public class CartRepositoryImpl implements ICartRepository {
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public void deleteById(Long id) {
         Session session=sessionFactory.openSession();
         Transaction transaction=session.beginTransaction();
         try {
@@ -44,27 +44,36 @@ public class CartRepositoryImpl implements ICartRepository {
     }
 
     @Override
-    public void updateCart(Shoping_Cart shopingCart) {
-        Session session =sessionFactory.openSession();
-        Transaction transaction=session.beginTransaction();
-        try {
-            if (shopingCart.getShoppingCartId()==null){
+    public boolean save(Shoping_Cart shopingCart) {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        try
+        {
+            if (shopingCart.getShoppingCartId() == null)
+            {
                 session.save(shopingCart);
             }
-            else {
+            else
+            {
                 session.update(shopingCart);
             }
             transaction.commit();
-        }catch (Exception e){
+            return true;
+        }
+        catch (Exception e)
+        {
+            transaction.rollback();
             throw new RuntimeException(e);
         }
-        finally {
+        finally
+        {
             session.close();
         }
     }
 
+
     @Override
-    public Shoping_Cart findById(Integer id) {
+    public Shoping_Cart findById(Long id) {
         Session session=sessionFactory.openSession();
         try {
             return session.get(Shoping_Cart.class,id);
@@ -76,5 +85,29 @@ public class CartRepositoryImpl implements ICartRepository {
         }
     }
 
+    @Override
+    public List<Shoping_Cart> findByUserId(Long userId) {
+        Session session = sessionFactory.openSession();
+        try {
+            return session.createQuery("from Shoping_Cart where user.id = :userId", Shoping_Cart.class)
+                    .setParameter("userId", userId)
+                    .list();
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public Shoping_Cart findByUserIdAndProductId(Long userId, Long productId) {
+        Session session = sessionFactory.openSession();
+        try {
+            return session.createQuery("from Shoping_Cart where user.id = :userId and product.id = :productId", Shoping_Cart.class)
+                    .setParameter("userId", userId)
+                    .setParameter("productId", productId)
+                    .uniqueResult();
+        } finally {
+            session.close();
+        }
+    }
 
 }

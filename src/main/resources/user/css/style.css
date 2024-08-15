@@ -9765,12 +9765,6 @@ small.form-text {
   .table td {
     border-top: none;
     border-bottom: .1rem solid #ebebeb; }
-  .table th,
-  .table td {
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 1.4rem;
-    padding-bottom: 1.4rem; }
   .table td {
     vertical-align: middle; }
 

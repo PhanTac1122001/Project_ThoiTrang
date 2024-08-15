@@ -79,11 +79,11 @@
             </li>
 
             <li class="sidebar__nav-item">
-                <a th:href="@{/category}" class="sidebar__nav-link"><i class="ti ti-movie"></i> <span>Catalog</span></a>
+                <a th:href="@{/category}" class="sidebar__nav-link "><i class="ti ti-movie"></i> <span>Catalog</span></a>
             </li>
 
             <li class="sidebar__nav-item">
-
+                <a th:href="@{/admin/manage-account}"class="sidebar__nav-link "><i class="ti ti-users"></i> <span>Users</span></a>
             </li>
 
             <li class="sidebar__nav-item">
@@ -180,7 +180,7 @@
                             <td th:text="${loop.count}"></td>
                             <td th:text="${p.productName}"></td>
                             <td th:text="${p.description}"></td>
-                            <td th:text="${p.category}"></td>
+                            <td th:text="${p.getCategory().getCategoryName()}"></td>
                             <td th:text="${p.createdAt}"></td>
                             <td th:text="${p.updatedAt}"></td>
                             <td>

@@ -13,6 +13,8 @@ public interface IUserRepository {
     //phân trang, search
     List<User> findAllUser(int page, int size, String search);
 
+    List<User> findAll();
+
     Long totalAllUser(String search);
 
     // Sắp xếp theo username tăng dần
