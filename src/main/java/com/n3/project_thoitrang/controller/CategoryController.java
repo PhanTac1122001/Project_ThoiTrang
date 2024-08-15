@@ -16,7 +16,6 @@ import javax.validation.Valid;
 public class CategoryController {
     private final ICategoryService categoryService;
 
-
     @GetMapping("/category")
     public String findAll(Model model)
     {
