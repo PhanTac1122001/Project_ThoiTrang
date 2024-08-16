@@ -1,15 +1,20 @@
 package com.n3.project_thoitrang.controller;
 
+import com.n3.project_thoitrang.dto.FormLogin;
+import com.n3.project_thoitrang.dto.FormRegister;
 import com.n3.project_thoitrang.model.entity.User;
+import com.n3.project_thoitrang.service.ILoginRegisterService;
 import com.n3.project_thoitrang.service.IUserService;
+import com.n3.project_thoitrang.service.UploadFile;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -18,6 +23,8 @@ import java.util.List;
 public class AdminController {
     private final HttpSession session;
     private final IUserService userService;
+    private final UploadFile uploadFile;
+    private final ILoginRegisterService loginRegisterService;
 
     @GetMapping("admin/manage-account")
     public String viewUser(
@@ -69,4 +76,23 @@ public class AdminController {
     public String dashboard(){
         return "admin/dashboard";
     }
+
+    @GetMapping("admin/manage-account/registerAdmin")
+    public String viewRegisterAdmin(Model model) {
+        model.addAttribute("formRegister", new FormRegister());
+        return "admin/register-admin";
+    }
+    @PostMapping("admin/manage-account/registerAdmin")
+    public String handleRegisterAdmin(@Valid @ModelAttribute("formRegister") FormRegister formRegister, BindingResult bindingResult,Model model,@RequestParam("avatarFile") MultipartFile file) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("formRegister", formRegister);
+            return "admin/register-admin";
+        }
+        String urlAvatar = uploadFile.uploadLocal(file);
+        formRegister.setAvatar(urlAvatar);
+        loginRegisterService.handleRegisterAdmin(formRegister);
+        return "redirect:/admin/manage-account";
+    }
+
+
 }

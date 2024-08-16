@@ -40,6 +40,11 @@ private final UploadFile uploadFile;
         User user = loginRegisterService.handleLogin(formLogin);
         if (user != null)
         {
+            if (!user.isStatus()){
+                model.addAttribute("error", "your account is blocked");
+                model.addAttribute("formLogin", formLogin);
+                return "login/login";
+            }
             if (user.getRole().stream().anyMatch(roles -> roles.getRoleName().equals(Role.RoleName.USER)))
             {
                 return "index";
@@ -72,7 +77,7 @@ private final UploadFile uploadFile;
         }
         String urlAvatar = uploadFile.uploadLocal(file);
         formRegister.setAvatar(urlAvatar);
-        loginRegisterService.handleRegister(formRegister);
+        loginRegisterService.handleRegisterUser(formRegister);
         FormLogin formLogin = new FormLogin();
         model.addAttribute("formLogin", formLogin);
         return "/login/login";
@@ -83,5 +88,10 @@ private final UploadFile uploadFile;
     {
         loginRegisterService.handleLogout();
         return "index";
+    }
+
+    @RequestMapping("/login-register/detail")
+    public String detail(){
+        return "user/edit-user";
     }
 }
