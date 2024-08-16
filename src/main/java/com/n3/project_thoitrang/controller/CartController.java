@@ -4,10 +4,7 @@ import com.n3.project_thoitrang.model.entity.Image;
 import com.n3.project_thoitrang.model.entity.Product;
 import com.n3.project_thoitrang.model.entity.Shoping_Cart;
 import com.n3.project_thoitrang.model.entity.User;
-import com.n3.project_thoitrang.service.ICartService;
-import com.n3.project_thoitrang.service.ICategoryService;
-import com.n3.project_thoitrang.service.IProductService;
-import com.n3.project_thoitrang.service.IUserService;
+import com.n3.project_thoitrang.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +21,7 @@ public class CartController {
     private final IUserService userService;
     private final ICategoryService categoryService;
     private  final IProductService productService;
+    private final IBannerService bannerService;
     public String cart(){
         return "user/cart";
     }
@@ -53,22 +51,24 @@ public class CartController {
         model.addAttribute("cartItems", cartItemList);
         model.addAttribute("productImagesMap", productImagesMap);
 
-//        for ( cart : cartItemLis)
         return "user/cart";
     }
 
     @PostMapping("/user/shopping-cart/{id}")
     public String shoppingCart(@PathVariable("id") Long productId, @RequestParam("quantity") Integer quantity, Model model) {
-        // Assuming you have the user ID from the session or security context
-//        Long userId = getCurrentUserId();
+//         Assuming you have the user ID from the session or security context
+        Long userId = getCurrentUserId();
 
-        // Add the product to the cart
-//        cartService.addProductToCart(userId, productId, quantity);
+//         Add the product to the cart
+        cartService.addProductToCart(userId, productId, quantity);
 
-        // Redirect to the shopping cart view or another page
-//        model.addAttribute("banners",bannerService.findAll());
+//         Redirect to the shopping cart view or another page
+        model.addAttribute("banners",bannerService.findAll());
         model.addAttribute("categories",categoryService.findAll());
         return "user/index"; // Adjust the redirect as needed
     }
+    private Long getCurrentUserId() {
 
+        return 1L; // Placeholder user ID
+    }
 }
