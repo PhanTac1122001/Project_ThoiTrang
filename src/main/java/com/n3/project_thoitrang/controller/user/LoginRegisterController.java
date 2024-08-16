@@ -92,6 +92,6 @@ private final UploadFile uploadFile;
 
     @RequestMapping("/detail")
     public String detail(){
-        return "user/edit-user";
+        return "user/user-detail";
     }
 }
