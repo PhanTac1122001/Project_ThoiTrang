@@ -117,10 +117,15 @@ public class UserRepositoryImpl implements IUserRepository {
     }
 
     @Override
-    public List<User> findAllByOrderByUsernameAsc() {
+    public List<User> findAllByOrderByUsernameAsc(int page,int size) {
         Session session = sessionFactory.openSession();
         try {
-            return session.createQuery("select u from User u order by u.username desc ", User.class).getResultList();
+
+            return session.createQuery("select u from User u order by u.username desc ", User.class)
+                    .setFirstResult(page * size)
+                    .setMaxResults(size)
+                    .getResultList();
+
         } catch (Exception ex) {
             throw new RuntimeException(ex);
         } finally {
@@ -128,11 +133,15 @@ public class UserRepositoryImpl implements IUserRepository {
         }
     }
 
+
     @Override
-    public List<User> findAllByOrderByUsernameDesc() {
+    public List<User> findAllByOrderByUsernameDesc(int page,int size) {
         Session session = sessionFactory.openSession();
         try {
-            return session.createQuery("select u from User u order by u.username asc ", User.class).getResultList();
+            return session.createQuery("select u from User u order by u.username asc ", User.class)
+                    .setFirstResult(page * size)
+                    .setMaxResults(size)
+                    .getResultList();
         } catch (Exception ex) {
             throw new RuntimeException(ex);
         } finally {

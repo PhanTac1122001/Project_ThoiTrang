@@ -86,13 +86,13 @@ public class UserServiceImpl implements IUserService {
 
     //sắp xếp
     @Override
-    public List<User> findAllByOrderByUsernameAsc() {
-        return userRepository.findAllByOrderByUsernameAsc();
+    public List<User> findAllByOrderByUsernameAsc(int page,int size) {
+        return userRepository.findAllByOrderByUsernameAsc(page,size);
     }
     //sắp xếp
     @Override
-    public List<User> findAllByOrderByUsernameDesc() {
-        return userRepository.findAllByOrderByUsernameDesc();
+    public List<User> findAllByOrderByUsernameDesc(int page,int size) {
+        return userRepository.findAllByOrderByUsernameDesc(page,size);
     }
 
     @Override

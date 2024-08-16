@@ -59,10 +59,12 @@
                         <a href="#" class="social-icon social-pinterest" title="Instagram" target="_blank"><i class="icon-pinterest-p"></i></a>
                         <a href="#" class="social-icon social-instagram" title="Pinterest" target="_blank"><i class="icon-instagram"></i></a>
                     </div><!-- End .soial-icons -->
-                    <ul class="top-menu top-link-menu">
+
+                    <ul style="display: flex" class="top-menu top-link-menu">
                         <li th:if="${session.data_user}!=null">
                             <ul>
-                                <li><a th:href="@{/login-register/detail}" data-toggle="modal"><i class="icon-user"></i><p th:text="${session.data_user.fullname}"></p></a></li>
+                                <li><a th:href="@{/login-register/detail}" data-toggle="modal"><i class="icon-user"></i>
+                                    <p th:text="${session.data_user.fullname}"></p></a></li>
                             </ul>
                         </li>
                         <li th:if="${session.data_user}==null">
