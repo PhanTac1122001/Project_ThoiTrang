@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<!-- Mirrored from hotflix.volkovdesign.com/admin/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Jul 2024 09:41:34 GMT -->
+<!-- Mirrored from hotflix.volkovdesign.com/admin/users.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Jul 2024 09:43:03 GMT -->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -48,10 +48,10 @@
 <!-- sidebar -->
 <div class="sidebar">
     <th:block th:replace="layout/layoutNameAdmin::name-admin"></th:block>
-    </div>
-    <!-- end sidebar user -->
 
-    <!-- sidebar nav -->
+<!-- end sidebar user -->
+
+<!-- sidebar nav -->
     <div class="sidebar__nav-wrap">
         <ul class="sidebar__nav">
             <li class="sidebar__nav-item">
@@ -71,13 +71,18 @@
             </li>
 
             <li class="sidebar__nav-item">
-                <a href="reviews.html" class="sidebar__nav-link"><i class="ti ti-star-half-filled"></i> <span>Reviews</span></a>
+                <a th:href="@{/list-product}" class="sidebar__nav-link " ><i class="ti ti-star-half-filled"></i> <span>Product Detail</span></a>
             </li>
 
             <li class="sidebar__nav-item">
-                <a href="settings.html" class="sidebar__nav-link"><i class="ti ti-settings"></i> <span>Settings</span></a>
+                <a th:href="@{/banner}" class="sidebar__nav-link " ><i class="ti ti-star-half-filled"></i> <span>Banner</span></a>
             </li>
-
+            <li class="sidebar__nav-item">
+                <a th:href="@{/color}" class="sidebar__nav-link " ><i class="ti ti-star-half-filled"></i> <span>Color</span></a>
+            </li>
+            <li class="sidebar__nav-item">
+                <a th:href="@{/size}" class="sidebar__nav-link " ><i class="ti ti-star-half-filled"></i> <span>Size</span></a>
+            </li>
             <!-- dropdown -->
             <li class="sidebar__nav-item">
                 <a class="sidebar__nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="ti ti-files"></i> <span>Pages</span> <i class="ti ti-chevron-down"></i></a>
@@ -103,9 +108,9 @@
     <!-- sidebar copyright -->
     <div class="sidebar__copyright">© HOTFLIX, 2019—2024. <br>Create by <a href="https://themeforest.net/user/dmitryvolkov/portfolio" target="_blank">Dmitry Volkov</a></div>
     <!-- end sidebar copyright -->
-</div>
-<!-- end sidebar -->
 
+<!-- end sidebar -->
+</div>
 <!-- main content -->
 <main class="main">
     <div class="container-fluid">
@@ -575,6 +580,7 @@
 <script th:src="@{/admin/js/slimselect.min.js}"></script>
 <script th:src="@{/admin/js/smooth-scrollbar.js}"></script>
 <script th:src="@{/admin/js/admin.js}"></script>
+
 </body>
 
 <!-- Mirrored from hotflix.volkovdesign.com/admin/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Jul 2024 09:41:43 GMT -->
