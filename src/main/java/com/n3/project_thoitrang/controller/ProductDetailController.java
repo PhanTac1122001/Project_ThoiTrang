@@ -21,13 +21,10 @@ public class ProductDetailController {
 
     @GetMapping()
     public String listProduct() {
-        return "user/list-product";
+        return "admin/manage-product-detail";
     }
 
-    @GetMapping("/add")
-    public String addProduct() {
-        return "user/add-product";
-    }
+
 
     @PostMapping("add-productdetail")
     public String addProductDetail(@Valid @ModelAttribute("productdetail") Product_Detail product_detail, Model model, BindingResult result) {
