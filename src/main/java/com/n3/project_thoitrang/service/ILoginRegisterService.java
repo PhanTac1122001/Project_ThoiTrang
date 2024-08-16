@@ -7,7 +7,9 @@ import com.n3.project_thoitrang.model.entity.User;
 public interface ILoginRegisterService {
     User handleLogin(FormLogin formLogin);
 
-    void handleRegister(FormRegister formRegister);
+    void handleRegisterUser(FormRegister formRegister);
 
     void handleLogout();
+
+    void handleRegisterAdmin(FormRegister formRegister);
 }

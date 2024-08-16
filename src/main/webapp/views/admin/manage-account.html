@@ -118,6 +118,7 @@
                     <span class="main__title-stat">3,702 Total</span>
 
                     <div class="main__title-wrap">
+                        <a th:href="@{/admin/manage-account/registerAdmin}" class="main__title-link main__title-link--wrap">Add admin</a>
                         <button type="button" data-bs-toggle="modal" class="main__title-link main__title-link--wrap" data-bs-target="#modal-user">Add user</button>
 
                         <form th:action="@{/admin/manage-account/sortUserList}" method="get">

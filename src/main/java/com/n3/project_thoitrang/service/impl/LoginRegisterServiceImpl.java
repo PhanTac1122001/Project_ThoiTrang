@@ -33,7 +33,7 @@ private final ILoginRegisterRepository loginRegisterRepository;
     }
 
     @Override
-    public void handleRegister(FormRegister formRegister) {
+    public void handleRegisterUser(FormRegister formRegister) {
         List<Role> role = new ArrayList<>();
         role.add(roleRepository.findRolesByRoleName(Role.RoleName.USER));
         User user = User.builder()
@@ -53,6 +53,27 @@ private final ILoginRegisterRepository loginRegisterRepository;
         //save role cho user nay
 
 
+    }
+
+    @Override
+    public void handleRegisterAdmin(FormRegister formRegister) {
+        List<Role> role = new ArrayList<>();
+        role.add(roleRepository.findRolesByRoleName(Role.RoleName.ADMIN));
+        User user = User.builder()
+                .username(formRegister.getUsername())
+                .password(BCrypt.hashpw(formRegister.getPassword(), BCrypt.gensalt(12)))
+                .role(role)
+                .status(true)
+                .email(formRegister.getEmail())
+                .phone(formRegister.getPhone())
+                .address(formRegister.getAddress())
+                .fullname(formRegister.getFullName())
+                .avatar(formRegister.getAvatar())
+                .updatedAt(new Date())
+                .createdAt(new Date())
+                .build();
+        loginRegisterRepository.handleRegister(user);
+        //save role cho user nay
     }
 
     @Override

@@ -60,13 +60,25 @@
                         <a href="#" class="social-icon social-instagram" title="Pinterest" target="_blank"><i class="icon-instagram"></i></a>
                     </div><!-- End .soial-icons -->
                     <ul class="top-menu top-link-menu">
-                        <li>
+                        <li th:if="${session.data_user}!=null">
+                            <ul>
+                                <li><a th:href="@{/login-register/detail}" data-toggle="modal"><i class="icon-user"></i><p th:text="${session.data_user.fullname}"></p></a></li>
+                            </ul>
+                        </li>
+                        <li th:if="${session.data_user}==null">
                             <a href="#">Links</a>
                             <ul>
                                 <li><a th:href="@{/login-register/login}" data-toggle="modal"><i class="icon-user"></i>Login</a></li>
                             </ul>
                         </li>
+                        <li th:if="${session.data_user}!=null">
+                            <a href="#">Links</a>
+                            <ul>
+                                <li><a th:href="@{/login-register/login}" data-toggle="modal"><i class="icon-user"></i>Logout</a></li>
+                            </ul>
+                        </li>
                     </ul><!-- End .top-menu -->
+
 
                     <div class="header-dropdown">
                         <a href="#">USD</a>
