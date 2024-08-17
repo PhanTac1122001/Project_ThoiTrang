@@ -139,15 +139,15 @@
 
             <!-- form -->
             <div class="col-12">
-                <form th:action="@{addColor}" method="post" th:object="${colors}" class="sign__form sign__form--add">
+                <form th:action="@{/addColor}" method="post" th:object="${color}" class="sign__form sign__form--add">
                     <div class="row">
                         <div class="col-12 col-xl-7">
                             <div class="row">
                                 <div class="col-12">
                                     <div class="sign__group">
-                                        <input type="hidden" th:field="*{id}">
+                                        <input type="hidden" th:field="*{colorId}">
                                         <label class="sign__label">Name:</label>
-                                        <input type="text" th:field="*{name}" class="sign__input" placeholder="Name">
+                                        <input type="text" th:field="*{colorName}" class="sign__input" placeholder="Name">
                                     </div>
                                 </div>
 
@@ -175,7 +175,7 @@
 
 
                         <div class="col-12">
-                            <button type="button" class="sign__btn sign__btn--small"><span>Publish</span></button>
+                            <button type="submit" class="sign__btn sign__btn--small"><span>Add Color</span></button>
                         </div>
                     </div>
                 </form>

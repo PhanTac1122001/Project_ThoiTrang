@@ -21,18 +21,20 @@ public class ColorController {
     @Autowired
     private final IColorService colorService;
     @GetMapping("/color")
-    public String color(){
+    public String color(Model model){
+        model.addAttribute("color", colorService.findAll());
         return "admin/color";
     }
     @GetMapping("/add-color")
     public String doAddColor(Model model){
-        model.addAttribute("colors",new Color());
+
+        model.addAttribute("color",new Color());
         return "general/add-color";
     }
     @PostMapping("/addColor")
-    public String addColor(@Valid @ModelAttribute("colors") Color color, Model model, BindingResult result){
+    public String addColor(@Valid @ModelAttribute("color") Color color, Model model, BindingResult result){
         if (result.hasErrors()){
-            model.addAttribute("colors",color);
+            model.addAttribute("color",color);
             return "general/add-color";
         }else {
             Boolean bl=colorService.save(color);

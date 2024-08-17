@@ -32,6 +32,11 @@ public class ProductController {
         return "admin/manage-product";
     }
 
+    @GetMapping(value = { "/list"})
+    public String showProduct() {
+        return "user/list-product";
+    }
+
 
 
     @PostMapping("/addProduct")
