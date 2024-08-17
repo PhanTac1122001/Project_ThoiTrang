@@ -90,8 +90,8 @@ private final UploadFile uploadFile;
         return "index";
     }
 
-    @RequestMapping("/login-register/detail")
+    @RequestMapping("/detail")
     public String detail(){
-        return "user/edit-user";
+        return "user/user-detail";
     }
 }

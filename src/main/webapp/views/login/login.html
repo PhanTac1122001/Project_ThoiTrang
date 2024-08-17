@@ -666,13 +666,13 @@
                                         <label>Your username *</label>
                                         <input type="text" class="form-control" th:field="*{userName}">
 <!--                                        <div th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" class="text-danger"></div>-->
-<!--                                        <small th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}"></small>-->
+                                        <small th:if="${#fields.hasErrors('userName')}" class="text-danger" th:errors="*{userName}"></small>
                                     </div><!-- End .form-group -->
 
                                     <div class="form-group">
                                         <label>Password *</label>
                                         <input type="password" class="form-control" th:field="*{password}">
-<!--                                        <small th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></small>-->
+                                        <small th:if="${#fields.hasErrors('password')}" class="text-danger" th:errors="*{password}"></small>
                                     </div><!-- End .form-group -->
 
                                     <div class="form-footer">

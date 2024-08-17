@@ -3,7 +3,6 @@
 
 <!-- Mirrored from hotflix.volkovdesign.com/admin/users.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Jul 2024 09:43:03 GMT -->
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -23,59 +22,6 @@
     <meta name="keywords" content="">
     <meta name="author" content="Dmitry Volkov">
     <title>HotFlix – Online Movies, TV Shows & Cinema HTML Template</title>
-    <style>.pagination-ul {
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        margin-top: 25px;
-        border: none;
-        border-radius: 8px;
-        height: 40px;
-        width: auto;
-        background-color: #222028;
-        /*background-color: #1a191f;*/
-    }
-
-    .pagination-form {
-        font-size: 16px;
-        height: 40px;
-        width: 40px;
-        color: #c0c0c0;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        border-radius: 8px;
-        border: 2px solid transparent;
-    }
-
-    .active a {
-        color: #fff;
-        cursor: default;
-        border-color: #f9ab00;
-    }
-
-    .active a:hover {
-        color: #fff;
-    }
-
-    .catalog__btn--change {
-        background-color: rgba(87, 186, 234, 0.1);
-    }
-
-    .catalog__btn--change i {
-        color: #3fa2c5;
-    }
-
-    .catalog__btn--change:hover {
-        background-color: rgba(87, 186, 234, 0.2);
-    }
-
-    .catalog__btn--change:hover i {
-        color: #3fa2c5;
-    }
-    </style>
 </head>
 
 <body>
@@ -84,8 +30,7 @@
     <div class="header__content">
         <!-- header logo -->
         <a href="index.html" class="header__logo">
-            <img th:src="@{/user/images/logo.png}" class="footer-logo" alt="Footer Logo" width="105"
-                 height="25">
+            <img src="img/logo.svg" alt="">
         </a>
         <!-- end header logo -->
 
@@ -110,39 +55,32 @@
     <div class="sidebar__nav-wrap">
         <ul class="sidebar__nav">
             <li class="sidebar__nav-item">
-                <a th:href="@{/dashboard}" class="sidebar__nav-link "><i class="ti ti-layout-grid"></i>
-                    <span>Dashboard</span></a>
+                <a th:href="@{/dashboard}" class="sidebar__nav-link "><i class="ti ti-layout-grid"></i> <span>Dashboard</span></a>
             </li>
 
             <li class="sidebar__nav-item">
-                <a th:href="@{/category}" class="sidebar__nav-link "><i class="ti ti-movie"></i>
-                    <span>Catalog</span></a>
+                <a th:href="@{/category}" class="sidebar__nav-link "><i class="ti ti-movie"></i> <span>Catalog</span></a>
             </li>
 
             <li class="sidebar__nav-item">
-                <a th:href="@{/admin/manage-account}" class="sidebar__nav-link sidebar__nav-link--active"><i
-                        class="ti ti-users"></i> <span>Users</span></a>
+                <a th:href="@{/admin/manage-account}" class="sidebar__nav-link "><i class="ti ti-users"></i> <span>Users</span></a>
             </li>
 
             <li class="sidebar__nav-item">
-                <a th:href="@{/manage-Product}" class="sidebar__nav-link"><i class="ti ti-message"></i>
-                    <span>Product</span></a>
+                <a th:href="@{/manage-Product}" class="sidebar__nav-link"><i class="ti ti-message"></i> <span>Product</span></a>
             </li>
 
             <li class="sidebar__nav-item">
-                <a href="reviews.html" class="sidebar__nav-link"><i class="ti ti-star-half-filled"></i>
-                    <span>Reviews</span></a>
+                <a th:href="@{/list-product}" class="sidebar__nav-link sidebar__nav-link--active" ><i class="ti ti-star-half-filled"></i> <span>Product Detail</span></a>
             </li>
 
             <li class="sidebar__nav-item">
-                <a href="settings.html" class="sidebar__nav-link"><i class="ti ti-settings"></i>
-                    <span>Settings</span></a>
+                <a href="settings.html" class="sidebar__nav-link"><i class="ti ti-settings"></i> <span>Settings</span></a>
             </li>
 
             <!-- dropdown -->
             <li class="sidebar__nav-item">
-                <a class="sidebar__nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i
-                        class="ti ti-files"></i> <span>Pages</span> <i class="ti ti-chevron-down"></i></a>
+                <a class="sidebar__nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="ti ti-files"></i> <span>Pages</span> <i class="ti ti-chevron-down"></i></a>
 
                 <ul class="dropdown-menu sidebar__dropdown-menu">
                     <li><a href="add-item.html">Add item</a></li>
@@ -163,12 +101,11 @@
     <!-- end sidebar nav -->
 
     <!-- sidebar copyright -->
-    <div class="sidebar__copyright">© HOTFLIX, 2019—2024. <br>Create by <a
-            href="https://themeforest.net/user/dmitryvolkov/portfolio" target="_blank">Dmitry Volkov</a></div>
+    <div class="sidebar__copyright">© HOTFLIX, 2019—2024. <br>Create by <a href="https://themeforest.net/user/dmitryvolkov/portfolio" target="_blank">Dmitry Volkov</a></div>
     <!-- end sidebar copyright -->
 </div>
 <!-- end sidebar -->
-</div>
+
 <!-- main content -->
 <main class="main">
     <div class="container-fluid">
@@ -176,23 +113,21 @@
             <!-- main title -->
             <div class="col-12">
                 <div class="main__title">
-                    <h2>Users</h2>
+                    <h2>Product Detail</h2>
 
                     <span class="main__title-stat">3,702 Total</span>
 
                     <div class="main__title-wrap">
-                        <a th:href="@{/admin/manage-account/registerAdmin}"
-                           class="main__title-link main__title-link--wrap">Add admin</a>
-
+                        <a type="button" th:href="@{/add-color}"  class="main__title-link main__title-link--wrap" data-bs-target="#modal-user">Add Color</a>
 
                         <form th:action="@{/admin/manage-account/sortUserList}" method="get">
-                            <select class="filter__select" id="filter__sort" name="sort" onchange="this.form.submit()">
+                            <select  class="filter__select" id="filter__sort" name="sort" onchange="this.form.submit()" >
                                 <option value="desc" th:selected="${sort == 'desc'}">Sort(A-Z)</option>
                                 <option value="asc" th:selected="${sort == 'asc'}">Sort(Z-A)</option>
                             </select>
-                            <input type="hidden" name="page" th:value="${page}"/>
-                            <input type="hidden" name="size" th:value="${size}"/>
-                            <input type="hidden" name="search" th:value="${search}"/>
+                            <input type="hidden" name="page" th:value="${page}" />
+                            <input type="hidden" name="size" th:value="${size}" />
+                            <input type="hidden" name="search" th:value="${search}" />
                         </form>
 
 
@@ -202,12 +137,12 @@
                         <!--                            <option value="2">Status</option>-->
                         <!--                        </select>-->
 
-                        <form th:action="@{/admin/manage-account}" class="main__title-form">
+                        <form th:action="@{/admin/manage-account}" class="main__title-form" >
                             <input type="hidden" name="page" th:value="${page}">
                             <input type="hidden" name="size" th:value="${size}">
                             <input type="search" placeholder="Find user.." th:value="${search}" name="search">
-                            <button type="submit">
-                                <i class="ti ti-search"></i>
+                            <button  type="submit">
+                                <i class="ti ti-search" ></i>
                             </button>
                         </form>
                         <!-- end search -->
@@ -215,56 +150,73 @@
                 </div>
             </div>
             <!-- end main title -->
+            <div class="card-header">
+                <h3 class="card-title" >User Manager</h3>
+                <!--                <nav class="navbar navbar-expand-lg bg-light">-->
+                <!--                    <div class="container-fluid">-->
+                <!--                        <a class="navbar-brand addNewBarber" href="#" data-toggle="modal" data-target="#addModal">-->
+                <!--                            <button type="button" class="btn btn-success">+ Create new User</button>-->
+                <!--                        </a>-->
+                <!--                        <form th:action="@{/admin/manage-account}" class="d-flex" role="search">-->
+                <!--                            <input type="hidden" name="page" th:value="${page}">-->
+                <!--                            <input type="hidden" name="size" th:value="${size}">-->
+                <!--                            <input class="form-control me-2 fst-italic" type="search"-->
+                <!--                                   th:value="${search}"-->
+                <!--                                   name="search"-->
+                <!--                                   placeholder="Enter user's name... "-->
+                <!--                                   aria-label="Search">-->
+                <!--                            <button class="btn btn-outline-success" type="submit">Search</button>-->
+                <!--                        </form>-->
+                <!--&lt;!&ndash;                        <form th:action="@{sortUserList}" method="get">&ndash;&gt;-->
+                <!--&lt;!&ndash;                            <label for="sort">Sắp xếp theo:</label>&ndash;&gt;-->
+                <!--&lt;!&ndash;                            <select id="sort" name="sort" onchange="this.form.submit()">&ndash;&gt;-->
+                <!--&lt;!&ndash;                                <option value="asc" th:selected="${sort == 'asc'}">Tên (A-Z)</option>&ndash;&gt;-->
+                <!--&lt;!&ndash;                                <option value="desc" th:selected="${sort == 'desc'}">Tên (Z-A)</option>&ndash;&gt;-->
+                <!--&lt;!&ndash;                            </select>&ndash;&gt;-->
+                <!--&lt;!&ndash;                        </form>&ndash;&gt;-->
+                <!--&lt;!&ndash;                        <form th:action="@{/admin/manage-account/sortUserList}" method="get">&ndash;&gt;-->
+                <!--&lt;!&ndash;                            &lt;!&ndash; Thêm các tham số phân trang và tìm kiếm vào biểu mẫu &ndash;&gt;&ndash;&gt;-->
+                <!--&lt;!&ndash;                            <input type="hidden" name="page" th:value="${page}" />&ndash;&gt;-->
+                <!--&lt;!&ndash;                            <input type="hidden" name="size" th:value="${size}" />&ndash;&gt;-->
+                <!--&lt;!&ndash;                            <input type="hidden" name="search" th:value="${search}" />&ndash;&gt;-->
 
+                <!--&lt;!&ndash;                            <label for="sort">Sắp xếp theo:</label>&ndash;&gt;-->
+                <!--&lt;!&ndash;                            <select id="sort" name="sort" onchange="this.form.submit()">&ndash;&gt;-->
+                <!--&lt;!&ndash;                                <option value="asc" th:selected="${sort == 'asc'}">Tên (A-Z)</option>&ndash;&gt;-->
+                <!--&lt;!&ndash;                                <option value="desc" th:selected="${sort == 'desc'}">Tên (Z-A)</option>&ndash;&gt;-->
+                <!--&lt;!&ndash;                            </select>&ndash;&gt;-->
+                <!--&lt;!&ndash;                        </form>&ndash;&gt;-->
+
+                <!--                    </div>-->
+                <!--                </nav>-->
+            </div>
             <!-- users -->
             <div class="col-12">
-                <div class="catalog catalog--1" style="overflow-y: hidden; height: 75vh; width: 100%; table-layout: fixed;">
-
+                <div class="catalog catalog--1">
                     <table class="catalog__table">
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>AVATAR</th>
-                            <th>USERNAME/EMAIL</th>
-                            <th>FULL NAME</th>
-                            <th>PHONE</th>
-                            <th>ADDRESS</th>
-                            <th>STATUS</th>
-                            <th>CRAETED DATE</th>
+                            <th>Color Name</th>
+                            <th>Status</th>
                             <th>ACTIONS</th>
                         </tr>
                         </thead>
                         <!--                        id,avatar,username,email,fullname,status,create-date,action,phone,address-->
                         <tbody>
-                        <tr th:each="u : ${userList}">
+                        <tr th:each="c : ${color}">
+                            <!--                            <td th:text="${page * size + loop.count}"></td>-->
                             <td>
-                                <div class="catalog__text" th:text="${u.userId}"></div>
+                                <div class="catalog__text" th:text="${c.colorId}"></div>
                             </td>
-                            <td class="catalog__text">
-                                <img th:src="@{${u.avatar}}" width="50px" height="50px" alt=""/>
-                            </td>
+
+
                             <td>
-                                <div class="catalog__user">
-                                    <div class="catalog__avatar">
-                                        <img src="img/user.svg" alt="">
-                                    </div>
-                                    <div class="catalog__meta">
-                                        <h3 th:text="${u.username}"></h3>
-                                        <span th:text="${u.email}"></span>
-                                    </div>
-                                </div>
+                                <div class="catalog__text" th:text="${c.colorName}"></div>
                             </td>
+
                             <td>
-                                <div class="catalog__text" th:text="${u.fullname}"></div>
-                            </td>
-                            <td>
-                                <div class="catalog__text" th:text="${u.phone}"></div>
-                            </td>
-                            <td>
-                                <div class="catalog__text" th:text="${u.address}"></div>
-                            </td>
-                            <td>
-                                <div class="catalog__text" th:text="${u.status ? 'Hoạt Động' : 'Khóa'}"></div>
+                                <div class="catalog__text" th:text="${c.status ? 'Hoạt Động' : 'Khóa'}"></div>
                             </td>
                             <!--                            <td>-->
                             <!--                                <div class="catalog__text">1</div>-->
@@ -272,20 +224,16 @@
                             <!--                            <td>-->
                             <!--                                <div class="catalog__text catalog__text&#45;&#45;green">Approved</div>-->
                             <!--                            </td>-->
-                            <td>
-                                <div class="catalog__text" th:text="${u.createdAt}"></div>
-                            </td>
+
                             <td>
                                 <div class="catalog__btns">
-                                    <a th:href="@{'/admin/manage-account/updateStatus?id='+${u.userId}}"
-                                       class="catalog__btn catalog__btn--banned">
+                                    <a th:href="@{'/admin/manage-account/updateStatus?id='+${u.userId}}" class="catalog__btn catalog__btn--banned" >
                                         <i class="ti ti-lock"></i>
                                     </a>
                                     <a href="../user/user-detail.html" class="catalog__btn catalog__btn--edit">
                                         <i class="ti ti-edit"></i>
                                     </a>
-                                    <button type="button" data-bs-toggle="modal"
-                                            class="catalog__btn catalog__btn--delete" data-bs-target="#modal-delete">
+                                    <button type="button" data-bs-toggle="modal" class="catalog__btn catalog__btn--delete" data-bs-target="#modal-delete">
                                         <i class="ti ti-trash"></i>
                                     </button>
                                 </div>
@@ -295,22 +243,65 @@
                     </table>
                 </div>
             </div>
+            <!-- end users -->
+            <nav th:if="${totalPages > 0}" aria-label="Page navigation example ">
+                <ul class="pagination float-end mx-4">
+                    <!-- button previous -->
+                    <li th:class="${page == 0 ?'page-item disabled':'page-item'}">
+                        <a class="page-link" th:href="@{'/admin/manage-account?page='+${page - 1} + '&search='+${search}}">Previous</a>
+                    </li>
+                    <!-- button number -->
+                    <th:block th:each="number : ${#numbers.sequence(1,totalPages)}">
+                        <li th:class="${number == (page+1) ? 'page-item active':'page-item'}">
+                            <a class="page-link" th:href="@{'/admin/manage-account?page='+${number - 1} + '&search='+${search}}" th:text="${number}"></a>
+                        </li>
+                    </th:block>
+                    <!-- button next -->
+                    <li th:class="${(page+1) == totalPages ?'page-item disabled':'page-item'}">
+                        <a class="page-link" th:href="@{'/admin/manage-account?page='+${page + 1} + '&search='+${search}}">Next</a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- paginator -->
+            <!--            <div class="col-12">-->
+            <!--                <div class="main__paginator">-->
+            <!--                    &lt;!&ndash; amount &ndash;&gt;-->
+            <!--                    <span class="main__paginator-pages">10 of 169</span>-->
+            <!--                    &lt;!&ndash; end amount &ndash;&gt;-->
 
-            <div class="col-12">
-                <!-- end users -->
-                <nav th:if="${totalPages > 0}" aria-label="Page navigation example">
-                    <ul class="pagination float-end mx-4 pagination-ul">
-                        <th:block th:each="number : ${#numbers.sequence(1,totalPages)}">
-                            <li th:class="${number == (page+1) ? 'page-item active':'page-item'}" >
-                                <a class=" pagination-form"  th:href="@{'/admin/manage-account?page='+${number - 1} + '&search='+${search}}" th:text="${number}"></a>
-                            </li>
-                        </th:block>
+            <!--                    <ul class="main__paginator-list">-->
+            <!--                        <li>-->
+            <!--                            <a href="#">-->
+            <!--                                <i class="ti ti-chevron-left"></i>-->
+            <!--                                <span>Prev</span>-->
+            <!--                            </a>-->
+            <!--                        </li>-->
+            <!--                        <li>-->
+            <!--                            <a href="#">-->
+            <!--                                <span>Next</span>-->
+            <!--                                <i class="ti ti-chevron-right"></i>-->
+            <!--                            </a>-->
+            <!--                        </li>-->
+            <!--                    </ul>-->
 
-                    </ul>
-                </nav>
-            </div>
+            <!--                    <ul class="paginator">-->
+            <!--                        <li class="paginator__item paginator__item&#45;&#45;prev">-->
+            <!--                            <a href="#"><i class="ti ti-chevron-left"></i></a>-->
+            <!--                        </li>-->
+            <!--                        <li class="paginator__item"><a href="#">1</a></li>-->
+            <!--                        <li class="paginator__item paginator__item&#45;&#45;active"><a href="#">2</a></li>-->
+            <!--                        <li class="paginator__item"><a href="#">3</a></li>-->
+            <!--                        <li class="paginator__item"><a href="#">4</a></li>-->
+            <!--                        <li class="paginator__item"><span>...</span></li>-->
+            <!--                        <li class="paginator__item"><a href="#">29</a></li>-->
+            <!--                        <li class="paginator__item"><a href="#">30</a></li>-->
+            <!--                        <li class="paginator__item paginator__item&#45;&#45;next">-->
+            <!--                            <a href="#"><i class="ti ti-chevron-right"></i></a>-->
+            <!--                        </li>-->
+            <!--                    </ul>-->
+            <!--                </div>-->
+            <!--            </div>-->
             <!-- end paginator -->
-
         </div>
     </div>
 </main>
@@ -388,8 +379,7 @@
                         <!--&lt;!&ndash;                            <button type="submit" th:text="${u.status ? 'Khóa' : 'Hoạt động'}"></button>&ndash;&gt;-->
                         <!--                        </form>-->
 
-                        <button class="modal__btn modal__btn--dismiss" type="button" data-bs-dismiss="modal"
-                                aria-label="Close"><span>Dismiss</span></button>
+                        <button class="modal__btn modal__btn--dismiss" type="button" data-bs-dismiss="modal" aria-label="Close"><span>Dismiss</span></button>
                     </div>
                 </form>
             </div>
@@ -410,8 +400,7 @@
 
                     <div class="modal__btns">
                         <button class="modal__btn modal__btn--apply" type="button"><span>Delete</span></button>
-                        <button class="modal__btn modal__btn--dismiss" type="button" data-bs-dismiss="modal"
-                                aria-label="Close"><span>Dismiss</span></button>
+                        <button class="modal__btn modal__btn--dismiss" type="button" data-bs-dismiss="modal" aria-label="Close"><span>Dismiss</span></button>
                     </div>
                 </form>
             </div>

@@ -14,7 +14,9 @@
         <entry key="file://$PROJECT_DIR$/src/main/webapp/views/index.html" value="file://$PROJECT_DIR$/src/main/webapp/views" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/views/login/login.html" value="file://$PROJECT_DIR$/src/main/webapp/views/login" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/views/login/register.html" value="file://$PROJECT_DIR$/src/main/webapp/views/login" />
+
         <entry key="file://$PROJECT_DIR$/src/main/webapp/views/user/list-product.html" value="file://$PROJECT_DIR$/src/main/webapp/views/user" />
+
       </map>
     </option>
   </component>

@@ -19,10 +19,10 @@ public interface IUserService {
     Long totalAllUser(String search);
 
     // Sắp xếp theo username tăng dần
-    List<User> findAllByOrderByUsernameAsc();
+    List<User> findAllByOrderByUsernameAsc(int page,int size);
 
     // Sắp xếp theo username giảm dần
-    List<User> findAllByOrderByUsernameDesc();
+    List<User> findAllByOrderByUsernameDesc(int page,int size);
 
     User findUserById(Long id);
 }
