@@ -1,7 +1,6 @@
 package com.n3.project_thoitrang.dto;
 
 import lombok.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,10 +13,10 @@ import javax.persistence.Id;
 @Getter
 @Setter
 @Builder
-public class Color {
+public class ColorDto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
-    private String name;
+    private String colorId;
+    private String colorName;
     private Boolean status = true;
 }
