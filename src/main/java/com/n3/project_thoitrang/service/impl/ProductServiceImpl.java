@@ -14,6 +14,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class ProductServiceImpl implements IProductService {
+
     private final IProductRepository productRepository;
     @Override
     public List<Product> findAll() {
@@ -42,11 +43,31 @@ public class ProductServiceImpl implements IProductService {
 
     @Override
     public List<Product> findByName(String proName) {
-        return Collections.emptyList();
+        return productRepository.findByName(proName);
     }
 
     @Override
     public Product findById(Long proId) {
         return productRepository.findById(proId);
+    }
+
+    @Override
+    public List<Product> findAllProduct(int page, int size, String search) {
+        return productRepository.findAllProduct(page, size, search);
+    }
+
+    @Override
+    public Long totalAllProduct(String search) {
+        return productRepository.totalAllProduct(search);
+    }
+
+    @Override
+    public List<Product> findAllByOrderByProductNameAsc(int page, int size) {
+        return productRepository.findAllByOrderByProductNameAsc(page, size);
+    }
+
+    @Override
+    public List<Product> findAllByOrderByProductNameDesc(int page, int size) {
+        return productRepository.findAllByOrderByProductNameDesc(page, size);
     }
 }
