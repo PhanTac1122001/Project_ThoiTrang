@@ -84,7 +84,8 @@
     <div class="header__content">
         <!-- header logo -->
         <a href="index.html" class="header__logo">
-            <img src="img/logo.svg" alt="">
+            <img th:src="@{/user/images/logo.png}" class="footer-logo" alt="Footer Logo" width="105"
+                 height="25">
         </a>
         <!-- end header logo -->
 
@@ -182,9 +183,7 @@
                     <div class="main__title-wrap">
                         <a th:href="@{/admin/manage-account/registerAdmin}"
                            class="main__title-link main__title-link--wrap">Add admin</a>
-                        <button type="button" data-bs-toggle="modal" class="main__title-link main__title-link--wrap"
-                                data-bs-target="#modal-user">Add user
-                        </button>
+
 
                         <form th:action="@{/admin/manage-account/sortUserList}" method="get">
                             <select class="filter__select" id="filter__sort" name="sort" onchange="this.form.submit()">
@@ -216,46 +215,7 @@
                 </div>
             </div>
             <!-- end main title -->
-            <div class="card-header">
-                <h3 class="card-title">User Manager</h3>
-                <!--                <nav class="navbar navbar-expand-lg bg-light">-->
-                <!--                    <div class="container-fluid">-->
-                <!--                        <a class="navbar-brand addNewBarber" href="#" data-toggle="modal" data-target="#addModal">-->
-                <!--                            <button type="button" class="btn btn-success">+ Create new User</button>-->
-                <!--                        </a>-->
-                <!--                        <form th:action="@{/admin/manage-account}" class="d-flex" role="search">-->
-                <!--                            <input type="hidden" name="page" th:value="${page}">-->
-                <!--                            <input type="hidden" name="size" th:value="${size}">-->
-                <!--                            <input class="form-control me-2 fst-italic" type="search"-->
-                <!--                                   th:value="${search}"-->
-                <!--                                   name="search"-->
-                <!--                                   placeholder="Enter user's name... "-->
-                <!--                                   aria-label="Search">-->
-                <!--                            <button class="btn btn-outline-success" type="submit">Search</button>-->
-                <!--                        </form>-->
-                <!--&lt;!&ndash;                        <form th:action="@{sortUserList}" method="get">&ndash;&gt;-->
-                <!--&lt;!&ndash;                            <label for="sort">Sắp xếp theo:</label>&ndash;&gt;-->
-                <!--&lt;!&ndash;                            <select id="sort" name="sort" onchange="this.form.submit()">&ndash;&gt;-->
-                <!--&lt;!&ndash;                                <option value="asc" th:selected="${sort == 'asc'}">Tên (A-Z)</option>&ndash;&gt;-->
-                <!--&lt;!&ndash;                                <option value="desc" th:selected="${sort == 'desc'}">Tên (Z-A)</option>&ndash;&gt;-->
-                <!--&lt;!&ndash;                            </select>&ndash;&gt;-->
-                <!--&lt;!&ndash;                        </form>&ndash;&gt;-->
-                <!--&lt;!&ndash;                        <form th:action="@{/admin/manage-account/sortUserList}" method="get">&ndash;&gt;-->
-                <!--&lt;!&ndash;                            &lt;!&ndash; Thêm các tham số phân trang và tìm kiếm vào biểu mẫu &ndash;&gt;&ndash;&gt;-->
-                <!--&lt;!&ndash;                            <input type="hidden" name="page" th:value="${page}" />&ndash;&gt;-->
-                <!--&lt;!&ndash;                            <input type="hidden" name="size" th:value="${size}" />&ndash;&gt;-->
-                <!--&lt;!&ndash;                            <input type="hidden" name="search" th:value="${search}" />&ndash;&gt;-->
 
-                <!--&lt;!&ndash;                            <label for="sort">Sắp xếp theo:</label>&ndash;&gt;-->
-                <!--&lt;!&ndash;                            <select id="sort" name="sort" onchange="this.form.submit()">&ndash;&gt;-->
-                <!--&lt;!&ndash;                                <option value="asc" th:selected="${sort == 'asc'}">Tên (A-Z)</option>&ndash;&gt;-->
-                <!--&lt;!&ndash;                                <option value="desc" th:selected="${sort == 'desc'}">Tên (Z-A)</option>&ndash;&gt;-->
-                <!--&lt;!&ndash;                            </select>&ndash;&gt;-->
-                <!--&lt;!&ndash;                        </form>&ndash;&gt;-->
-
-                <!--                    </div>-->
-                <!--                </nav>-->
-            </div>
             <!-- users -->
             <div class="col-12">
                 <div class="catalog catalog--1" style="overflow-y: hidden; height: 75vh; width: 100%; table-layout: fixed;">
