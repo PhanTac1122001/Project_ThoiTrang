@@ -23,6 +23,59 @@
     <meta name="keywords" content="">
     <meta name="author" content="Dmitry Volkov">
     <title>HotFlix – Online Movies, TV Shows & Cinema HTML Template</title>
+    <style>.pagination-ul {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-top: 25px;
+        border: none;
+        border-radius: 8px;
+        height: 40px;
+        width: auto;
+        background-color: #222028;
+        /*background-color: #1a191f;*/
+    }
+
+    .pagination-form {
+        font-size: 16px;
+        height: 40px;
+        width: 40px;
+        color: #c0c0c0;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border-radius: 8px;
+        border: 2px solid transparent;
+    }
+
+    .active a {
+        color: #fff;
+        cursor: default;
+        border-color: #f9ab00;
+    }
+
+    .active a:hover {
+        color: #fff;
+    }
+
+    .catalog__btn--change {
+        background-color: rgba(87, 186, 234, 0.1);
+    }
+
+    .catalog__btn--change i {
+        color: #3fa2c5;
+    }
+
+    .catalog__btn--change:hover {
+        background-color: rgba(87, 186, 234, 0.2);
+    }
+
+    .catalog__btn--change:hover i {
+        color: #3fa2c5;
+    }
+    </style>
 </head>
 
 <body>
@@ -49,7 +102,8 @@
 <!-- sidebar -->
 <div class="sidebar">
     <th:block th:replace="layout/layoutNameAdmin::name-admin"></th:block>
-    </div>
+
+
     <!-- end sidebar user -->
 
     <!-- sidebar nav -->
@@ -68,7 +122,7 @@
             </li>
 
             <li class="sidebar__nav-item">
-                <a th:href="@{/manage-Product}" class="sidebar__nav-link sidebar__nav-link--active"><i class="ti ti-message"></i> <span>Product</span></a>
+                <a th:href="@{/manage-product}" class="sidebar__nav-link sidebar__nav-link--active"><i class="ti ti-message"></i> <span>Product</span></a>
             </li>
 
             <li class="sidebar__nav-item">
@@ -106,7 +160,7 @@
     <!-- end sidebar copyright -->
 </div>
 <!-- end sidebar -->
-
+</div>
 <!-- main content -->
 <main class="main">
     <div class="container-fluid">
@@ -122,19 +176,38 @@
                     <div class="main__title-wrap">
                         <a th:href="@{/add}"  class="main__title-link main__title-link--wrap" data-bs-target="#modal-user">Add Product</a>
 
-                        <select class="filter__select" name="sort" id="filter__sort">
-                            <option value="0">Date created</option>
-                            <option value="1">Pricing plan</option>
-                            <option value="2">Status</option>
-                        </select>
+<!--                        <select class="filter__select" name="sort" id="filter__sort">-->
+<!--                            <option value="0">Date created</option>-->
+<!--                            <option value="1">Pricing plan</option>-->
+<!--                            <option value="2">Status</option>-->
+<!--                        </select>-->
+
+                        <form th:action="@{/admin/manage-product/sortProductList}" method="get">
+                            <select class="filter__select"  name="sort" onchange="this.form.submit()">
+                                <option value="desc" th:selected="${sort == 'desc'}">Sort(A-Z)</option>
+                                <option value="asc" th:selected="${sort == 'asc'}">Sort(Z-A)</option>
+                            </select>
+                            <input type="hidden" name="page" th:value="${page}"/>
+                            <input type="hidden" name="size" th:value="${size}"/>
+                            <input type="hidden" name="search" th:value="${search}"/>
+                        </form>
 
                         <!-- search -->
-                        <form action="#" class="main__title-form">
-                            <input type="text" placeholder="Find user..">
-                            <button type="button">
+<!--                        <form action="#" class="main__title-form">-->
+<!--                            <input type="text" placeholder="Find Product..">-->
+<!--                            <button type="button">-->
+<!--                                <i class="ti ti-search"></i>-->
+<!--                            </button>-->
+<!--                        </form>-->
+                        <form th:action="@{/admin/manage-product}" class="main__title-form">
+                            <input type="hidden" name="page" th:value="${page}">
+                            <input type="hidden" name="size" th:value="${size}">
+                            <input type="search" placeholder="Find Product.." th:value="${search}" name="search">
+                            <button type="submit">
                                 <i class="ti ti-search"></i>
                             </button>
                         </form>
+
                         <!-- end search -->
                     </div>
                 </div>
@@ -143,7 +216,7 @@
 
             <!-- users -->
             <div class="col-12">
-                <div class="catalog catalog--1">
+                <div class="catalog catalog--1" style="overflow-y: hidden; height: 75vh; width: 100%; table-layout: fixed;">
                     <table class="catalog__table">
                         <thead>
                         <tr>
@@ -158,7 +231,7 @@
                         </thead>
 
                         <tbody>
-                        <tr th:each="p,loop : ${products}" style="color: wheat">
+                        <tr th:each="p,loop : ${productList}" style="color: wheat">
                             <td th:text="${loop.count}"></td>
                             <td th:text="${p.productName}"></td>
                             <td th:text="${p.description}"></td>
@@ -178,6 +251,20 @@
             </div>
             <!-- end users -->
 
+            <div class="col-12">
+                <!-- end users -->
+                <nav th:if="${totalPages > 0}" aria-label="Page navigation example">
+                    <ul class="pagination float-end mx-4 pagination-ul">
+                        <th:block th:each="number : ${#numbers.sequence(1,totalPages)}">
+                            <li th:class="${number == (page+1) ? 'page-item active':'page-item'}" >
+                                <a class=" pagination-form"  th:href="@{'/admin/manage-product?page='+${number - 1} + '&search='+${search}}" th:text="${number}"></a>
+                            </li>
+                        </th:block>
+
+                    </ul>
+                </nav>
+            </div>
+            <!-- end paginator -->
             <!-- paginator -->
             <div class="col-12">
                 <div class="main__paginator">

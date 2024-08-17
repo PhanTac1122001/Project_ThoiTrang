@@ -13,6 +13,8 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class ProductDetailServiceImpl implements IProductDetailService {
+
+
     @Autowired
     private final IProductDetailRepository productDetailRepository;
     @Override

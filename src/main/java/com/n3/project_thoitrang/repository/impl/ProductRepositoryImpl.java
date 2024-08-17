@@ -18,6 +18,88 @@ import java.util.List;
 
 public class ProductRepositoryImpl implements IProductRepository {
     private final SessionFactory sessionFactory;
+
+    @Override
+    public List<Product> findAllProduct(int page, int size, String search) {
+        Session session = sessionFactory.openSession();
+        try {
+            String hql = "from Product";
+            if (!search.isEmpty()) {
+                hql += " p where p.productName like concat('%',:search,'%')";
+            }
+            List<Product> products;
+            if (search.isEmpty()) {
+                products = session.createQuery(hql, Product.class)
+                        .setFirstResult(page * size)
+                        .setMaxResults(size)
+                        .getResultList();
+            } else {
+                products = session.createQuery(hql, Product.class)
+                        .setParameter("search", search)
+                        .setFirstResult(page * size)
+                        .setMaxResults(size)
+                        .getResultList();
+            }
+            return products;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public Long totalAllProduct(String search) {
+        Session session = sessionFactory.openSession();
+        try {
+            if (search.isEmpty()) {
+                return session.createQuery("select count(p) from Product p", Long.class)
+                        .getSingleResult();
+            } else {
+                return session.createQuery("select count(p) from Product p where p.productName like concat('%',:search,'%') ", Long.class)
+                        .setParameter("search", search)
+                        .getSingleResult();
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public List<Product> findAllByOrderByProductNameAsc(int page, int size) {
+        Session session = sessionFactory.openSession();
+        try {
+
+            return session.createQuery("select p from Product p order by p.productName desc ", Product.class)
+                    .setFirstResult(page * size)
+                    .setMaxResults(size)
+                    .getResultList();
+
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public List<Product> findAllByOrderByProductNameDesc(int page, int size) {
+        Session session = sessionFactory.openSession();
+        try {
+            return session.createQuery("select p from Product p order by p.productName asc ", Product.class)
+                    .setFirstResult(page * size)
+                    .setMaxResults(size)
+                    .getResultList();
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        } finally {
+            session.close();
+        }
+    }
+
     @Override
     public List<Product> findAll() {
         Session session = sessionFactory.openSession();
@@ -148,4 +230,6 @@ public class ProductRepositoryImpl implements IProductRepository {
             session.close();
         }
     }
+
+
 }
