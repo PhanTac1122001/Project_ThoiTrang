@@ -29,8 +29,11 @@
 <header class="header">
     <div class="header__content">
         <!-- header logo -->
+
         <a href="index.html" class="header__logo">
             <img src="img/logo.svg" alt="">
+            <img th:src="@{/user/images/logo.png}" class="footer-logo" alt="Footer Logo" width="105"
+                 height="25">
         </a>
         <!-- end header logo -->
 
@@ -49,6 +52,10 @@
 <div class="sidebar">
     <th:block th:replace="layout/layoutNameAdmin::name-admin"></th:block>
 
+<!--    </div>-->
+    <!-- end sidebar user -->
+
+
 <!-- end sidebar user -->
 
 <!-- sidebar nav -->
@@ -63,7 +70,7 @@
             </li>
 
             <li class="sidebar__nav-item">
-                <a th:href="@{/admin/manage-account}"class="sidebar__nav-link"><i class="ti ti-users"></i> <span>Users</span></a>
+                <a th:href="@{/admin/manage-account}" class="sidebar__nav-link"><i class="ti ti-users"></i> <span>Users</span></a>
             </li>
 
             <li class="sidebar__nav-item">

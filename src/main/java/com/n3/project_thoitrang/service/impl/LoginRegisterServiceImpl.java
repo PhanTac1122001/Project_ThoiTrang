@@ -79,5 +79,6 @@ private final ILoginRegisterRepository loginRegisterRepository;
     @Override
     public void handleLogout() {
     session.invalidate();
+    session.removeAttribute("data_user");
     }
 }

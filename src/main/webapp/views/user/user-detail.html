@@ -582,15 +582,20 @@
                         <div class="col-lg-6">
                             <div class="card card-dashboard">
                                 <div class="card-body">
-                                    <h3 class="card-title">Billing Address</h3><!-- End .card-title -->
-
-                                    <p>User Name<br>
-                                        User Company<br>
-                                        John str<br>
-                                        New York, NY 10001<br>
-                                        1-234-987-6543<br>
-                                        <a href="https://portotheme.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c6bfa9b3b4aba7afaa86aba7afaae8a5a9ab">[email&#160;protected]</a><br>
-                                        <a href="#">Edit <i class="icon-edit"></i></a></p>
+                                    <h3 class="card-title">Thông Tin Cá Nhân</h3><!-- End .card-title -->
+                                    <label>User Name:</label>
+                                    <p th:text="${session.data_user.username}"></p><br>
+                                    <label>Full Name: </label>
+                                    <p th:text="${session.data_user.fullname}"></p><br>
+                                    <label>Email: </label>
+                                    <p th:text="${session.data_user.email}"></p><br>
+                                    <label>Phone: </label>
+                                    <p th:text="${session.data_user.phone}"></p><br>
+                                    <label>Address: </label>
+                                    <p th:text="${session.data_user.address}"></p><br>
+                                    <label>Avatar: </label>
+                                    <p><img th:src="${session.data_user.avatar}" width="100px" height="100px"></p><br>
+                                        <a th:href="@{/edit-user}">Edit <i class="icon-edit"></i></a>
                                 </div><!-- End .card-body -->
                             </div><!-- End .card-dashboard -->
                         </div><!-- End .col-lg-6 -->

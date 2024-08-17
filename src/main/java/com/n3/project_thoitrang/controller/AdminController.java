@@ -45,22 +45,30 @@ public class AdminController {
         // totalPages
         Double totalPages = Math.ceil((double) userService.totalAllUser(search) / size);
         model.addAttribute("totalPages", totalPages);
-        return "/admin/manage-account";
+        return "admin/manage-account";
     }
 
     @GetMapping("admin/manage-account/sortUserList")
-    public String sortByName(Model model,   @RequestParam(value = "sort", defaultValue = "asc") String sort) {
+    public String sortByName(Model model,
+                             @RequestParam(name = "page", defaultValue = "0") Integer page,
+                             @RequestParam(name = "size", defaultValue = "5") Integer size,
+                             @RequestParam(name = "search", defaultValue = "") String search,
+                             @RequestParam(value = "sort", defaultValue = "asc") String sort) {
         List<User> user;
         if ("desc".equalsIgnoreCase(sort)) {
-            user = userService.findAllByOrderByUsernameDesc();
+            user = userService.findAllByOrderByUsernameDesc(page,size);
         } else {
-            user = userService.findAllByOrderByUsernameAsc();
+            user = userService.findAllByOrderByUsernameAsc(page,size);
         }
         model.addAttribute("userList", user);
         model.addAttribute("sort", sort);
         model.addAttribute("page",0);
         model.addAttribute("size",5);
+        model.addAttribute("search", search);
 
+        // totalPages
+        Double totalPages = Math.ceil((double) userService.totalAllUser(search) / size);
+        model.addAttribute("totalPages", totalPages);
         return "/admin/manage-account";
     }
 
@@ -72,6 +80,7 @@ public class AdminController {
         userService.save(newUser);
         return "redirect:/admin/manage-account";
     }
+
     @RequestMapping("/dashboard")
     public String dashboard(){
         return "admin/dashboard";

@@ -2,6 +2,7 @@
 package com.n3.project_thoitrang.model.entity;
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -47,10 +48,12 @@ public class User {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "created_at")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createdAt = new Date();
 
     @Temporal(TemporalType.DATE)
     @Column(name = "updated_at")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updatedAt;
 
     @Column(name = "is_deleted")

@@ -576,34 +576,51 @@
         <div class="page-content">
             <div class="dashboard">
                 <div class="container">
-                    <form action="#">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <label>First Name *</label>
-                                <input type="text" class="form-control" required>
-                            </div><!-- End .col-sm-6 -->
+                    <form th:action="@{/edit-user}" method="post" th:object="${user}" enctype="multipart/form-data">
+<!--                        <div class="row">-->
+<!--                            <div class="col-sm-6">-->
+<!--                                <label>First Name *</label>-->
+<!--                                <input type="text" class="form-control" required>-->
+<!--                            </div>&lt;!&ndash; End .col-sm-6 &ndash;&gt;-->
 
-                            <div class="col-sm-6">
-                                <label>Last Name *</label>
-                                <input type="text" class="form-control" required>
-                            </div><!-- End .col-sm-6 -->
-                        </div><!-- End .row -->
-
-                        <label>Display Name *</label>
-                        <input type="text" class="form-control" required>
-                        <small class="form-text">This will be how your name will be displayed in the account section and in reviews</small>
+<!--                            <div class="col-sm-6">-->
+<!--                                <label>Last Name *</label>-->
+<!--                                <input type="text" class="form-control" required>-->
+<!--                            </div>&lt;!&ndash; End .col-sm-6 &ndash;&gt;-->
+<!--                        </div>&lt;!&ndash; End .row &ndash;&gt;-->
+                        <label>Full Name *</label>
+                        <input type="text" class="form-control" name="newFullName" th:field="*{fullname}" required>
 
                         <label>Email address *</label>
-                        <input type="email" class="form-control" required>
+                        <input type="text" class="form-control" name="newEmail" th:field="*{email}" required>
 
-                        <label>Current password (leave blank to leave unchanged)</label>
-                        <input type="password" class="form-control">
+                        <label>Phone *</label>
+                        <input type="text" class="form-control" name="newPhone" th:field="*{phone}" required>
 
-                        <label>New password (leave blank to leave unchanged)</label>
-                        <input type="password" class="form-control">
+                        <label>Avatar *</label>
+                        <input type="hidden" th:field="*{avatar}">
+                        <input type="hidden" th:field="*{username}">
+                        <input type="hidden" th:field="*{userId}">
+                        <input type="hidden" th:field="*{createdAt}">
+                        <input type="hidden" th:field="*{password}">
+                        <input type="hidden" th:field="*{address}">
+                        <input type="hidden" th:field="*{updatedAt}">
+                        <input type="hidden" th:field="*{status}">
 
-                        <label>Confirm new password</label>
-                        <input type="password" class="form-control mb-2">
+<!--                        <input type="hidden" th:field="*{role}">-->
+                        <input type="file" class="form-control" name="newAvatar">
+                        <div>
+                            <img th:src="${user.avatar}" alt="#"/>
+                        </div>
+
+<!--                        <label>Current password (leave blank to leave unchanged)</label>-->
+<!--                        <input type="password" class="form-control">-->
+
+<!--                        <label>New password (leave blank to leave unchanged)</label>-->
+<!--                        <input type="password" class="form-control">-->
+
+<!--                        <label>Confirm new password</label>-->
+<!--                        <input type="password" class="form-control mb-2">-->
 
                         <button type="submit" class="btn btn-outline-primary-2">
                             <span>SAVE CHANGES</span>
