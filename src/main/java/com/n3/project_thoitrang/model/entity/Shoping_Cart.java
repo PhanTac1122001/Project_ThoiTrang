@@ -19,7 +19,7 @@ public class Shoping_Cart {
 
     @ManyToOne
     @JoinColumn(name = "product_id", nullable = false)
-    private Product product;
+    private Product_Detail productDetail;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)

@@ -48,7 +48,8 @@ public class UploadFileImpl implements UploadFile {
                 throw new RuntimeException(e);
             }
         }
-        return "";
+//        return "";
+        return uploadFirebase(path+localPath);
     }
 
 

@@ -39,7 +39,8 @@ public class ColorController {
         }else {
             Boolean bl=colorService.save(color);
             if (bl){
-                return "redirect:/color";
+                model.addAttribute("color", colorService.findAll());
+                return "admin/color";
             }else {
                 model.addAttribute("color",color);
                 model.addAttribute("error","inset is false");
