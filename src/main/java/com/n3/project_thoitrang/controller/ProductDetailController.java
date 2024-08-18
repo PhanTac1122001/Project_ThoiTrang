@@ -23,6 +23,7 @@ public class ProductDetailController {
     private final IColorService colorService;
     private final ISizeService sizeService;
     private final IImageService imageService;
+    private final ICategoryService categoryService;
     @GetMapping("/product-detail/{id}")
     public String productDetail(Model model, @PathVariable Long id) {
         model.addAttribute("product",productService.findById(id));
@@ -33,8 +34,17 @@ public class ProductDetailController {
     //List product detail
     @GetMapping(value = { "/list"})
     public String showProduct(Model model) {
-
+        model.addAttribute("categories", categoryService.findAll());
         model.addAttribute("productDetails", productDetailService.findAll());
+        return "user/list-product";
+    }
+
+
+    @GetMapping("/show_detail")
+    public String showDetail(Model model,@RequestParam Long id){
+        model.addAttribute("productDetails", categoryService.showAllProductDetails(id));
+
+        model.addAttribute("categories", categoryService.findAll());
         return "user/list-product";
     }
 

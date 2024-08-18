@@ -77,19 +77,13 @@ public class CategoryController {
         return "redirect:/category";
     }
 
-    // USER
-    @GetMapping("/category-user")
-    public String findAllUser(Model model)
-    {
-        model.addAttribute("categories", categoryService.findAll());
-        return "user/list-product";
-    }
+//    // USER
+//    @GetMapping("/category-user")
+//    public String findAllUser(Model model)
+//    {
+//        model.addAttribute("categories", categoryService.findAll());
+//        return "user/list-product";
+//    }
 
-    @GetMapping("/show_detail")
-    public String showDetail(Model model,@RequestParam Long id){
-        model.addAttribute("products", categoryService.showAllProductDetails(id));
 
-        model.addAttribute("categories", categoryService.findAll());
-        return "user/list-product";
-    }
 }
