@@ -736,17 +736,8 @@
 
                                             <div class="product-nav product-nav-thumbs">
                                                 <a href="#" class="active" th:text="${pd.getColor().getColorName()}">
-
-                                                </a>
-                                                <a href="#">
-                                                    <img th:src="@{/user/images/products/product-4-2-thumb.jpg}"
-                                                         alt="product desc">
                                                 </a>
 
-                                                <a href="#">
-                                                    <img th:src="@{/user/images/products/product-4-3-thumb.jpg}"
-                                                         alt="product desc">
-                                                </a>
                                             </div><!-- End .product-nav -->
                                         </div><!-- End .product-body -->
                                     </div><!-- End .product -->
@@ -802,10 +793,10 @@
                                         <div class="filter-items filter-items-count">
                                             <div class="filter-item">
                                                 <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="cat-1">
+                                                    <input type="hidden" class="custom-control-input" id="cat-1">
                                                     <label class="custom-control-label" for="cat-1">Dresses</label>
                                                 </div><!-- End .custom-checkbox -->
-                                                <span class="item-count">3</span>
+
                                             </div><!-- End .filter-item -->
 
                                             <div class="filter-item">
