@@ -204,6 +204,7 @@
                         </thead>
                         <!--                        id,avatar,username,email,fullname,status,create-date,action,phone,address-->
                         <tbody>
+
                         <tr th:each="c : ${color}">
                             <!--                            <td th:text="${page * size + loop.count}"></td>-->
                             <td>
@@ -227,7 +228,7 @@
 
                             <td>
                                 <div class="catalog__btns">
-                                    <a th:href="@{'/admin/manage-account/updateStatus?id='+${u.userId}}" class="catalog__btn catalog__btn--banned" >
+                                    <a th:href="@{'/admin/manage-account/updateStatus?id='+${c.colorId}}" class="catalog__btn catalog__btn--banned" >
                                         <i class="ti ti-lock"></i>
                                     </a>
                                     <a href="../user/user-detail.html" class="catalog__btn catalog__btn--edit">

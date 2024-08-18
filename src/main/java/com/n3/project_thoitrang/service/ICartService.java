@@ -15,7 +15,7 @@ public interface ICartService {
 
     Shoping_Cart findById(Long id);
     List<Shoping_Cart> getCartItemsByUserId(Long userId);
-    void addProductToCart(Long userId, Long productId, Integer quantity);
+    void addProductToCart(Long userId, Long productDetailId, Integer quantity);
 
     List<Image> getAllImagesByProductDetailId(Long productDetailId);
     Map<Long, Image> getSingleImageForEachProduct(List<Shoping_Cart> shopingCarts);

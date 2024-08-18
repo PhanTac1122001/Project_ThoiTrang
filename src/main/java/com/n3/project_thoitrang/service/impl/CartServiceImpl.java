@@ -57,8 +57,8 @@ public class CartServiceImpl implements ICartService {
     }
 
     @Override
-    public void addProductToCart(Long userId, Long productId, Integer quantity) {
-        Shoping_Cart existingCart = cartRepository.findByUserIdAndProductId(userId, productId);
+    public void addProductToCart(Long userId, Long productDetailId, Integer quantity) {
+        Shoping_Cart existingCart = cartRepository.findByUserIdAndProductId(userId, productDetailId);
         if (existingCart != null) {
             // If the item is already in the cart, just update the quantity
             existingCart.setOrderQuantity(existingCart.getOrderQuantity() + quantity);
@@ -87,9 +87,9 @@ public class CartServiceImpl implements ICartService {
     public Map<Long, Image> getSingleImageForEachProduct(List<Shoping_Cart> shopingCarts) {
         return shopingCarts.stream()
                 .collect(Collectors.toMap(
-                        shopingCart -> shopingCart.getProduct().getProductId(),
+                        shopingCart -> shopingCart.getProductDetail().getProductDetailId(),
                         shopingCart -> imageService.findAll().stream()
-                                .filter(image -> image.getProductDetail().getProductDetailId().equals(shopingCart.getProduct().getProductId()))
+                                .filter(image -> image.getProductDetail().getProductDetailId().equals(shopingCart.getProductDetail().getProductDetailId()))
                                 .findFirst()
                                 .orElse(null)
                 ));

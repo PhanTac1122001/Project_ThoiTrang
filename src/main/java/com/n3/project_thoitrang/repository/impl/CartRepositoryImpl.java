@@ -98,12 +98,12 @@ public class CartRepositoryImpl implements ICartRepository {
     }
 
     @Override
-    public Shoping_Cart findByUserIdAndProductId(Long userId, Long productId) {
+    public Shoping_Cart findByUserIdAndProductId(Long userId, Long productDetailId) {
         Session session = sessionFactory.openSession();
         try {
-            return session.createQuery("from Shoping_Cart where user.id = :userId and product.id = :productId", Shoping_Cart.class)
+            return session.createQuery("from Shoping_Cart where user.id = :userId and productDetail.id = :productDetailId", Shoping_Cart.class)
                     .setParameter("userId", userId)
-                    .setParameter("productId", productId)
+                    .setParameter("productDetailId", productDetailId)
                     .uniqueResult();
         } finally {
             session.close();

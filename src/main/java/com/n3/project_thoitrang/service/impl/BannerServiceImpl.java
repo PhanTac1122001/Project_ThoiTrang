@@ -24,6 +24,11 @@ bannerRepository.deleteById(id);
     }
 
     @Override
+    public boolean save(Banner banner) {
+        return bannerRepository.save(banner);
+    }
+
+    @Override
     public Banner findById(Long id) {
        return bannerRepository.findById(id);
     }
