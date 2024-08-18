@@ -1,10 +1,12 @@
 package com.n3.project_thoitrang.service.impl;
 import com.n3.project_thoitrang.model.entity.Category;
+import com.n3.project_thoitrang.model.entity.Product_Detail;
 import com.n3.project_thoitrang.repository.ICategoryRepository;
 import com.n3.project_thoitrang.service.ICategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -31,5 +33,10 @@ public class CategoryServiceImpl implements ICategoryService {
     @Override
     public Category findById(Long id) {
        return categoryRepository.findById(id);
+    }
+
+    @Override
+    public List<Product_Detail> showAllProductDetails(Long categoryId) {
+        return categoryRepository.showAllProductDetails(categoryId);
     }
 }

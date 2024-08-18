@@ -32,17 +32,18 @@ public class UserController {
     private UserServiceImpl userService;
     @Autowired
     private IRoleRepository roleRepository;
+
     @GetMapping("/edit-user")
     public String editUser(Model model) {
         User user = (User) session.getAttribute("data_user");
-
-        model.addAttribute("user", user);
+        model.addAttribute("useredit", user);
         return "/general/edit-user-detail";
     }
 
     @PostMapping("/edit-user")
-    public String newUser(@ModelAttribute("user") User newUser,
-                          @RequestParam("newAvatar") MultipartFile newAvatar, Model model,HttpSession session) {
+    public String newUser(@ModelAttribute User newUser,
+                          @RequestParam("newAvatar") MultipartFile newAvatar,
+                          Model model,HttpSession session) {
         if (newAvatar != null && !newAvatar.isEmpty()) {
             String avatarUrl = uploadFile.uploadLocal(newAvatar);
             newUser.setAvatar(avatarUrl);
@@ -50,7 +51,6 @@ public class UserController {
         List<Role> role = new ArrayList<>();
         role.add(roleRepository.findRolesByRoleName(Role.RoleName.USER));
         newUser.setRole(role);
-
 
         //Thieu save database
         userService.save(newUser);

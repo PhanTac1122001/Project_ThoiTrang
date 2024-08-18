@@ -32,6 +32,7 @@ private final UploadFile uploadFile;
     @PostMapping("/login")
     public String handleLogin(@Valid @ModelAttribute("formLogin") FormLogin formLogin, BindingResult bindingResult, Model model)
     {
+        //lỗi xác thực
         if (bindingResult.hasErrors())
         {
             model.addAttribute("formLogin", formLogin);
@@ -67,21 +68,22 @@ private final UploadFile uploadFile;
         return "login/register";
     }
 
-    @PostMapping("/register")
-    public String handleRegister(@Valid @ModelAttribute("formRegister")FormRegister formRegister, BindingResult bindingResult, Model model, @RequestParam("avatarFile") MultipartFile file)
-    {
-        if (bindingResult.hasErrors())
+        @PostMapping("/register")
+        public String handleRegister(@Valid @ModelAttribute("formRegister")FormRegister formRegister, BindingResult bindingResult, Model model, @RequestParam("avatarFile") MultipartFile file)
         {
-            model.addAttribute("formRegister", formRegister);
-            return "login/register";
+            if (bindingResult.hasErrors())
+            {
+                model.addAttribute("formRegister", formRegister);
+                return "login/register";
+            }
+            String urlAvatar = uploadFile.uploadLocal(file);
+            formRegister.setAvatar(urlAvatar);
+            loginRegisterService.handleRegisterUser(formRegister);
+
+            FormLogin formLogin = new FormLogin();
+            model.addAttribute("formLogin", formLogin);
+            return "/login/login";
         }
-        String urlAvatar = uploadFile.uploadLocal(file);
-        formRegister.setAvatar(urlAvatar);
-        loginRegisterService.handleRegisterUser(formRegister);
-        FormLogin formLogin = new FormLogin();
-        model.addAttribute("formLogin", formLogin);
-        return "/login/login";
-    }
 
     @GetMapping("/logout")
     public String handleLogout()

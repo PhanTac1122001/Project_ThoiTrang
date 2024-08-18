@@ -11,12 +11,11 @@
         <entry key="file://$PROJECT_DIR$/src/main/webapp/views/admin/manage-category.html" value="file://$PROJECT_DIR$/src/main/webapp/views/admin" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/views/general/add-category.html" value="file://$PROJECT_DIR$/src/main/webapp/views/general" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/views/general/edit-category.html" value="file://$PROJECT_DIR$/src/main/webapp/views/general" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/views/general/edit-user-detail.html" value="file://$PROJECT_DIR$/src/main/webapp/views/general" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/views/index.html" value="file://$PROJECT_DIR$/src/main/webapp/views" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/views/login/login.html" value="file://$PROJECT_DIR$/src/main/webapp/views/login" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/views/login/register.html" value="file://$PROJECT_DIR$/src/main/webapp/views/login" />
-
         <entry key="file://$PROJECT_DIR$/src/main/webapp/views/user/list-product.html" value="file://$PROJECT_DIR$/src/main/webapp/views/user" />
-
       </map>
     </option>
   </component>
