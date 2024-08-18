@@ -29,6 +29,8 @@ public class ProductDetailController {
         model.addAttribute("productDetails", productDetailService.findByProductId(id));
         return "admin/manage-product-detail";
     }
+
+    //List product detail
     @GetMapping(value = { "/list"})
     public String showProduct(Model model) {
 
