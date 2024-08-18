@@ -13,4 +13,16 @@ public interface IProductRepository {
     boolean delete(Long proId);
     List<Product> findByName(String proName);
     Product findById(Long id);
+
+    //phân trang, search
+    List<Product> findAllProduct(int page, int size, String search);
+
+
+    Long totalAllProduct(String search);
+
+    // Sắp xếp theo Product tăng dần
+    List<Product> findAllByOrderByProductNameAsc(int page,int size);
+
+    // Sắp xếp theo Product giảm dần
+    List<Product> findAllByOrderByProductNameDesc(int page,int size);
 }

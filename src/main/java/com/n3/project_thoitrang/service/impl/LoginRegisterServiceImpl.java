@@ -38,6 +38,7 @@ private final ILoginRegisterRepository loginRegisterRepository;
         role.add(roleRepository.findRolesByRoleName(Role.RoleName.USER));
         User user = User.builder()
                 .username(formRegister.getUsername())
+                //BCrypt.hashpw là phương thức tĩnh của BCrypt(mã hóa mk),gensalt tạo ra chuỗi salt với 12 số vòng băm
                 .password(BCrypt.hashpw(formRegister.getPassword(), BCrypt.gensalt(12)))
                 .role(role)
                 .status(true)
@@ -48,12 +49,11 @@ private final ILoginRegisterRepository loginRegisterRepository;
                 .avatar(formRegister.getAvatar())
                 .updatedAt(new Date())
                 .createdAt(new Date())
+                //tạo đối tượng từ tác thuộc tính trên
                 .build();
         loginRegisterRepository.handleRegister(user);
-        //save role cho user nay
-
-
     }
+
 
     @Override
     public void handleRegisterAdmin(FormRegister formRegister) {

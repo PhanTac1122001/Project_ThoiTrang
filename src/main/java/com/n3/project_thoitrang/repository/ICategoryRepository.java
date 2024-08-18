@@ -1,6 +1,7 @@
 package com.n3.project_thoitrang.repository;
 
 import com.n3.project_thoitrang.model.entity.Category;
+import com.n3.project_thoitrang.model.entity.Product_Detail;
 
 import java.util.List;
 
@@ -17,4 +18,6 @@ public interface ICategoryRepository {
 
     // 4. Xóa
     void deleteById(Long id);
+
+    List<Product_Detail> showAllProductDetails(Long categoryId);
 }
