@@ -1,5 +1,6 @@
 package com.n3.project_thoitrang.service;
 import com.n3.project_thoitrang.model.entity.Category;
+import com.n3.project_thoitrang.model.entity.Product_Detail;
 
 import java.util.List;
 
@@ -17,4 +18,6 @@ public interface ICategoryService {
 
     // Tìm kiếm
     Category findById(Long id);
+
+    List<Product_Detail> showAllProductDetails(Long categoryId);
 }
