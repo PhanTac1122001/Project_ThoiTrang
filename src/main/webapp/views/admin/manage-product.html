@@ -117,21 +117,22 @@
             </li>
 
             <li class="sidebar__nav-item">
-                <a th:href="@{/admin/manage-account}"class="sidebar__nav-link "><i class="ti ti-users"></i> <span>Users</span></a>
+                <a th:href="@{/admin/manage-account}" class="sidebar__nav-link"><i class="ti ti-users"></i> <span>Users</span></a>
             </li>
 
             <li class="sidebar__nav-item">
-                <a th:href="@{/manage-product}" class="sidebar__nav-link sidebar__nav-link--active"><i class="ti ti-message"></i> <span>Product</span></a>
+                <a th:href="@{/admin/manage-product}" class="sidebar__nav-link sidebar__nav-link--active"><i class="ti ti-message"></i> <span>Product</span></a>
             </li>
 
             <li class="sidebar__nav-item">
-                <a href="reviews.html" class="sidebar__nav-link"><i class="ti ti-star-half-filled"></i> <span>Reviews</span></a>
+                <a th:href="@{/banner}" class="sidebar__nav-link " ><i class="ti ti-star-half-filled"></i> <span>Banner</span></a>
             </li>
-
             <li class="sidebar__nav-item">
-                <a href="settings.html" class="sidebar__nav-link"><i class="ti ti-settings"></i> <span>Settings</span></a>
+                <a th:href="@{/color}" class="sidebar__nav-link " ><i class="ti ti-star-half-filled"></i> <span>Color</span></a>
             </li>
-
+            <li class="sidebar__nav-item">
+                <a th:href="@{/size}" class="sidebar__nav-link " ><i class="ti ti-star-half-filled"></i> <span>Size</span></a>
+            </li>
             <!-- dropdown -->
             <li class="sidebar__nav-item">
                 <a class="sidebar__nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="ti ti-files"></i> <span>Pages</span> <i class="ti ti-chevron-down"></i></a>
