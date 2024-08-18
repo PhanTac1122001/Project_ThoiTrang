@@ -43,7 +43,7 @@ public class UserController {
     @PostMapping("/edit-user")
     public String newUser(@ModelAttribute User newUser,
                           @RequestParam("newAvatar") MultipartFile newAvatar,
-                          Model model,HttpSession session) {
+                          Model model) {
         if (newAvatar != null && !newAvatar.isEmpty()) {
             String avatarUrl = uploadFile.uploadLocal(newAvatar);
             newUser.setAvatar(avatarUrl);

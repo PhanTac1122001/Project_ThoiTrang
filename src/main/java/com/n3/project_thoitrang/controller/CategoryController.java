@@ -87,7 +87,7 @@ public class CategoryController {
 
     @GetMapping("/show_detail")
     public String showDetail(Model model,@RequestParam Long id){
-        model.addAttribute("products", categoryService.showAllProductDetails(id));
+        model.addAttribute("productDetail", categoryService.showAllProductDetails(id));
 
         model.addAttribute("categories", categoryService.findAll());
         return "user/list-product";
