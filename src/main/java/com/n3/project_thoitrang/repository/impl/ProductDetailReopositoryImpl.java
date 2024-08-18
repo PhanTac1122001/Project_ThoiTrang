@@ -80,9 +80,13 @@ public class ProductDetailReopositoryImpl implements IProductDetailRepository {
             //case new product detail and have images
             if (product_detail.getProductDetailId() == null && images.get(0).getOriginalFilename() != "") {
               String sku= String.valueOf(UUID.randomUUID());
-
+                if(!images.isEmpty()){
+                    String myImage = uploadFile.uploadLocal(images.get(0));
+                    product_detail.setImage(myImage);
+                }
                 product_detail.setSku(sku);
                 session.save(product_detail);
+
                 for (MultipartFile image : images) {
                     Image newimg = new Image();
                     newimg.setProductDetail(product_detail);
