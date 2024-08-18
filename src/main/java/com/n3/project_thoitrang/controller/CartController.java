@@ -20,6 +20,7 @@ public class CartController {
     private  final IProductService productService;
     private final IBannerService bannerService;
 
+    @GetMapping("/cart")
     public String cart(){
         return "user/cart";
     }

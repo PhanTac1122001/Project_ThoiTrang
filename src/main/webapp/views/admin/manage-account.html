@@ -110,39 +110,33 @@
     <div class="sidebar__nav-wrap">
         <ul class="sidebar__nav">
             <li class="sidebar__nav-item">
-                <a th:href="@{/dashboard}" class="sidebar__nav-link "><i class="ti ti-layout-grid"></i>
-                    <span>Dashboard</span></a>
+                <a th:href="@{/dashboard}" class="sidebar__nav-link "><i class="ti ti-layout-grid"></i> <span>Dashboard</span></a>
             </li>
 
             <li class="sidebar__nav-item">
-                <a th:href="@{/category}" class="sidebar__nav-link "><i class="ti ti-movie"></i>
-                    <span>Catalog</span></a>
+                <a th:href="@{/category}" class="sidebar__nav-link"><i class="ti ti-movie"></i> <span>Catalog</span></a>
             </li>
 
             <li class="sidebar__nav-item">
-                <a th:href="@{/admin/manage-account}" class="sidebar__nav-link sidebar__nav-link--active"><i
-                        class="ti ti-users"></i> <span>Users</span></a>
+                <a th:href="@{/admin/manage-account}" class="sidebar__nav-link sidebar__nav-link--active"><i class="ti ti-users"></i> <span>Users</span></a>
             </li>
 
             <li class="sidebar__nav-item">
-                <a th:href="@{/manage-Product}" class="sidebar__nav-link"><i class="ti ti-message"></i>
-                    <span>Product</span></a>
+                <a th:href="@{/admin/manage-product}" class="sidebar__nav-link"><i class="ti ti-message"></i> <span>Product</span></a>
             </li>
 
             <li class="sidebar__nav-item">
-                <a href="reviews.html" class="sidebar__nav-link"><i class="ti ti-star-half-filled"></i>
-                    <span>Reviews</span></a>
+                <a th:href="@{/banner}" class="sidebar__nav-link " ><i class="ti ti-star-half-filled"></i> <span>Banner</span></a>
             </li>
-
             <li class="sidebar__nav-item">
-                <a href="settings.html" class="sidebar__nav-link"><i class="ti ti-settings"></i>
-                    <span>Settings</span></a>
+                <a th:href="@{/color}" class="sidebar__nav-link " ><i class="ti ti-star-half-filled"></i> <span>Color</span></a>
             </li>
-
+            <li class="sidebar__nav-item">
+                <a th:href="@{/size}" class="sidebar__nav-link " ><i class="ti ti-star-half-filled"></i> <span>Size</span></a>
+            </li>
             <!-- dropdown -->
             <li class="sidebar__nav-item">
-                <a class="sidebar__nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i
-                        class="ti ti-files"></i> <span>Pages</span> <i class="ti ti-chevron-down"></i></a>
+                <a class="sidebar__nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="ti ti-files"></i> <span>Pages</span> <i class="ti ti-chevron-down"></i></a>
 
                 <ul class="dropdown-menu sidebar__dropdown-menu">
                     <li><a href="add-item.html">Add item</a></li>
@@ -284,10 +278,10 @@
                                     <a href="../user/user-detail.html" class="catalog__btn catalog__btn--edit">
                                         <i class="ti ti-edit"></i>
                                     </a>
-                                    <button type="button" data-bs-toggle="modal"
-                                            class="catalog__btn catalog__btn--delete" data-bs-target="#modal-delete">
-                                        <i class="ti ti-trash"></i>
-                                    </button>
+<!--                                    <button type="button" data-bs-toggle="modal"-->
+<!--                                            class="catalog__btn catalog__btn&#45;&#45;delete" data-bs-target="#modal-delete">-->
+<!--                                        <i class="ti ti-trash"></i>-->
+<!--                                    </button>-->
                                 </div>
                             </td>
                         </tr>
