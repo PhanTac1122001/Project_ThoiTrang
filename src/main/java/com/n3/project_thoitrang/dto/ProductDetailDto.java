@@ -6,7 +6,6 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotBlank;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,12 +14,14 @@ import javax.validation.constraints.NotBlank;
 @Getter
 @Setter
 @Builder
-public class BannerDto {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private Long id;
-    private String title;
-    private String description;
+public class ProductDetailDto {
+
+    private Long product;
+    private String sku;
+    private Double unitPrice;
+    private int stockQuantity;
     private MultipartFile image;
-    private Boolean status = true;
+    private Long color;
+    private Long size;
+
 }

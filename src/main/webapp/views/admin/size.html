@@ -118,7 +118,7 @@
                     <span class="main__title-stat">3,702 Total</span>
 
                     <div class="main__title-wrap">
-                        <button type="button" data-bs-toggle="modal" class="main__title-link main__title-link--wrap" data-bs-target="#modal-user">Add Product Detail</button>
+                        <a type="button" th:href="@{/add-size}"  class="main__title-link main__title-link--wrap" data-bs-target="#modal-user">Add Size</a>
 
                         <form th:action="@{/admin/manage-account/sortUserList}" method="get">
                             <select  class="filter__select" id="filter__sort" name="sort" onchange="this.form.submit()" >
@@ -197,48 +197,28 @@
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>AVATAR</th>
-                            <th>USERNAME/EMAIL</th>
-                            <th>FULL NAME</th>
-                            <th>PHONE</th>
-                            <th>ADDRESS</th>
-                            <th>STATUS</th>
-                            <th>CRAETED DATE</th>
+                            <th>Size Name</th>
+
+                            <th>Status</th>
+
                             <th>ACTIONS</th>
                         </tr>
                         </thead>
                         <!--                        id,avatar,username,email,fullname,status,create-date,action,phone,address-->
                         <tbody>
-                        <tr th:each="u : ${userList}">
+                        <tr th:each="s : ${size}">
                             <!--                            <td th:text="${page * size + loop.count}"></td>-->
                             <td>
-                                <div class="catalog__text" th:text="${u.userId}"></div>
+                                <div class="catalog__text" th:text="${s.sizeId}"></div>
                             </td>
-                            <td class="catalog__text">
-                                <img th:src="@{${u.avatar}}" width="50px" height="50px" alt="" />
-                            </td>
+
+
                             <td>
-                                <div class="catalog__user">
-                                    <div class="catalog__avatar">
-                                        <img src="img/user.svg" alt="">
-                                    </div>
-                                    <div class="catalog__meta">
-                                        <h3 th:text="${u.username}"></h3>
-                                        <span th:text="${u.email}"></span>
-                                    </div>
-                                </div>
+                                <div class="catalog__text" th:text="${s.sizeName}"></div>
                             </td>
+
                             <td>
-                                <div class="catalog__text" th:text="${u.fullname}"></div>
-                            </td>
-                            <td>
-                                <div class="catalog__text" th:text="${u.phone}"></div>
-                            </td>
-                            <td>
-                                <div class="catalog__text" th:text="${u.address}"></div>
-                            </td>
-                            <td>
-                                <div class="catalog__text" th:text="${u.status ? 'Hoạt Động' : 'Khóa'}"></div>
+                                <div class="catalog__text" th:text="${s.status ? 'Hoạt Động' : 'Khóa'}"></div>
                             </td>
                             <!--                            <td>-->
                             <!--                                <div class="catalog__text">1</div>-->
@@ -246,12 +226,10 @@
                             <!--                            <td>-->
                             <!--                                <div class="catalog__text catalog__text&#45;&#45;green">Approved</div>-->
                             <!--                            </td>-->
-                            <td>
-                                <div class="catalog__text" th:text="${u.createdAt}"></div>
-                            </td>
+
                             <td>
                                 <div class="catalog__btns">
-                                    <a th:href="@{'/admin/manage-account/updateStatus?id='+${u.userId}}" class="catalog__btn catalog__btn--banned" >
+                                    <a th:href="@{'/admin/manage-account/updateStatus?id='+${s.sizeId}}" class="catalog__btn catalog__btn--banned" >
                                         <i class="ti ti-lock"></i>
                                     </a>
                                     <a href="../user/user-detail.html" class="catalog__btn catalog__btn--edit">

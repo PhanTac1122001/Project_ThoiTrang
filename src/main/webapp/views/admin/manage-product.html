@@ -232,17 +232,26 @@
                         <tbody>
                         <tr th:each="p,loop : ${productList}" style="color: wheat">
                             <td th:text="${loop.count}"></td>
-                            <td th:text="${p.productName}"></td>
+                            <td th:text="${p.productName}"><a th:href="@{/list-product}"></a></td>
                             <td th:text="${p.description}"></td>
                             <td th:text="${p.getCategory().getCategoryName()}"></td>
                             <td th:text="${p.createdAt}"></td>
                             <td th:text="${p.updatedAt}"></td>
                             <td>
-                                <a th:href="@{/editProduct/{id}(id=${p.productId})}" class="btn btn-warning">Edit</a>
+                                <div class="catalog__btns">
+<!--                                    <a th:href="@{list-product}" class="catalog__btn catalog__btn&#45;&#45;banned" >-->
+                                        <a th:href="@{/product-detail/{id}(id=${p.productId})}" class="catalog__btn catalog__btn--banned" >
+                                        <i class="ti ti-lock"></i>
+                                    </a>
+                                    <a th:href="@{/editProduct/{id}(id=${p.productId})}" class="catalog__btn catalog__btn--edit">
+                                        <i class="ti ti-edit"></i>
+                                    </a>
+                                    <a  th:href="@{/deleteProduct/{product_id}(product_id=${p.productId})}" class="catalog__btn catalog__btn--delete" data-bs-target="#modal-delete">
+                                        <i class="ti ti-trash"></i>
+                                    </a>
+                                </div>
                             </td>
-                            <td>
-                                <a th:href="@{/deleteProduct/{product_id}(product_id=${p.productId})}" class="btn btn-success">Delete</a>
-                            </td>
+
 
                         </tbody>
                     </table>

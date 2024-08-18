@@ -1,9 +1,6 @@
 package com.n3.project_thoitrang.controller;
 
-import com.n3.project_thoitrang.model.entity.Image;
-import com.n3.project_thoitrang.model.entity.Product;
-import com.n3.project_thoitrang.model.entity.Shoping_Cart;
-import com.n3.project_thoitrang.model.entity.User;
+import com.n3.project_thoitrang.model.entity.*;
 import com.n3.project_thoitrang.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -19,22 +16,26 @@ import java.util.Map;
 public class CartController {
     private final ICartService cartService;
     private final IUserService userService;
-    private final ICategoryService categoryService;
+    private  final IProductDetailService productDetailService;
     private  final IProductService productService;
     private final IBannerService bannerService;
+
     public String cart(){
         return "user/cart";
     }
 
-    @GetMapping("cart")
-    public String findAll(Model model){
+    @GetMapping("cart/{productDetailId}")
+    public String findAll(Model model, @PathVariable("productDetailId") Long id){
+        Product_Detail productDetail=productDetailService.findById(id);
+        Shoping_Cart shopingCart=new Shoping_Cart();
+        shopingCart.setProductDetail(productDetail);
+        User user=userService.findUserById(1L);
+        shopingCart.setUser(user);
+        cartService.addProductToCart(user.getUserId(),productDetail.getProductDetailId(), 3);
 
-        model.addAttribute("shop",cartService.findAll());
-        model.addAttribute("user", userService.findAll());
-        model.addAttribute("products", productService.findAll());
-        return "user/cart";
+        return "redirect:/list";
     }
-    @GetMapping("/deletecart/{id}")
+    @GetMapping("/deleteCart/{id}")
     public String deleteCart(@PathVariable Long id)
     {
         cartService.deleteById(id);
@@ -54,7 +55,7 @@ public class CartController {
         return "user/cart";
     }
 
-    @PostMapping("/user/shopping-cart/{id}")
+    @PostMapping("/user/cart/{id}")
     public String shoppingCart(@PathVariable("id") Long productId, @RequestParam("quantity") Integer quantity, Model model) {
 //         Assuming you have the user ID from the session or security context
         Long userId = getCurrentUserId();
@@ -64,7 +65,7 @@ public class CartController {
 
 //         Redirect to the shopping cart view or another page
         model.addAttribute("banners",bannerService.findAll());
-        model.addAttribute("categories",categoryService.findAll());
+
         return "user/index"; // Adjust the redirect as needed
     }
     private Long getCurrentUserId() {

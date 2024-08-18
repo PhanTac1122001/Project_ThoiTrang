@@ -57,6 +57,34 @@ public class IBannerRepositoryImpl implements IBannerRepository {
     }
 
     @Override
+    public boolean save(Banner banner) {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        try
+        {
+            if (banner.getId() == null)
+            {
+                session.save(banner);
+            }
+            else
+            {
+                session.update(banner);
+            }
+            transaction.commit();
+            return true;
+        }
+        catch (Exception e)
+        {
+            transaction.rollback();
+            throw new RuntimeException(e);
+        }
+        finally
+        {
+            session.close();
+        }
+    }
+
+    @Override
     public Banner findById(Long id) {
         Session session = sessionFactory.openSession();
         try

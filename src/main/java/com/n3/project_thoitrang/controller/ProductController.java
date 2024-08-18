@@ -3,7 +3,11 @@ package com.n3.project_thoitrang.controller;
 import com.n3.project_thoitrang.model.entity.Category;
 import com.n3.project_thoitrang.model.entity.Product;
 import com.n3.project_thoitrang.service.ICategoryService;
+
+import com.n3.project_thoitrang.service.IProductDetailService;
+
 import com.n3.project_thoitrang.service.ILoginRegisterService;
+
 import com.n3.project_thoitrang.service.IProductService;
 import com.n3.project_thoitrang.service.UploadFile;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +30,7 @@ public class ProductController {
     private final ICategoryService categoryService;
 
     private final IProductService productService;
-
+    private final IProductDetailService productDetailService;
     private final UploadFile uploadFile;
 
     private final HttpSession session;
@@ -37,10 +41,7 @@ public class ProductController {
 //        return "admin/manage-product";
 //    }
 
-    @GetMapping(value = { "/list"})
-    public String showProduct() {
-        return "user/list-product";
-    }
+
 
 
 
@@ -149,4 +150,13 @@ public class ProductController {
         return "admin/manage-product";
     }
 
+    @GetMapping("/detailProduct/{id}")
+    public String viewDetailEditProduct(@PathVariable Long id, Model model)
+    {
+        Product p = productService.findById(id);
+        model.addAttribute("p", p);
+        model.addAttribute("product-detail", productDetailService.findAll());
+
+        return "admin/manage-product-detail";
+    }
 }

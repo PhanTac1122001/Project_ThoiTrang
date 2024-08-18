@@ -15,8 +15,8 @@
     <link rel="stylesheet" th:href="@{/admin/webfont/tabler-icons.min.css}">
 
     <!-- Favicons -->
-    <link rel="icon" type="image/png"th:href="@{/admin/icon/favicon-32x32.png}" sizes="32x32">
-    <link rel="apple-touch-icon"th:href="@{/admin/icon/favicon-32x32.png}">
+    <link rel="icon" type="image/png" th:href="@{/admin/icon/favicon-32x32.png}" sizes="32x32">
+    <link rel="apple-touch-icon" th:href="@{/admin/icon/favicon-32x32.png}">
 
     <meta name="description" content="Online Movies, TV Shows & Cinema HTML Template">
     <meta name="keywords" content="">
@@ -86,20 +86,24 @@
             </li>
 
             <li class="sidebar__nav-item">
-                <a href="comments.html" class="sidebar__nav-link"><i class="ti ti-message"></i> <span>Comments</span></a>
+                <a href="comments.html" class="sidebar__nav-link"><i class="ti ti-message"></i>
+                    <span>Comments</span></a>
             </li>
 
             <li class="sidebar__nav-item">
-                <a href="reviews.html" class="sidebar__nav-link"><i class="ti ti-star-half-filled"></i> <span>Reviews</span></a>
+                <a href="reviews.html" class="sidebar__nav-link"><i class="ti ti-star-half-filled"></i>
+                    <span>Reviews</span></a>
             </li>
 
             <li class="sidebar__nav-item">
-                <a href="settings.html" class="sidebar__nav-link"><i class="ti ti-settings"></i> <span>Settings</span></a>
+                <a href="settings.html" class="sidebar__nav-link"><i class="ti ti-settings"></i>
+                    <span>Settings</span></a>
             </li>
 
             <!-- dropdown -->
             <li class="sidebar__nav-item">
-                <a class="sidebar__nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="ti ti-files"></i> <span>Pages</span> <i class="ti ti-chevron-down"></i></a>
+                <a class="sidebar__nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i
+                        class="ti ti-files"></i> <span>Pages</span> <i class="ti ti-chevron-down"></i></a>
 
                 <ul class="dropdown-menu sidebar__dropdown-menu">
                     <li><a href="add-item.html">Add item</a></li>
@@ -120,7 +124,8 @@
     <!-- end sidebar nav -->
 
     <!-- sidebar copyright -->
-    <div class="sidebar__copyright">© HOTFLIX, 2019—2024. <br>Create by <a href="https://themeforest.net/user/dmitryvolkov/portfolio" target="_blank">Dmitry Volkov</a></div>
+    <div class="sidebar__copyright">© HOTFLIX, 2019—2024. <br>Create by <a
+            href="https://themeforest.net/user/dmitryvolkov/portfolio" target="_blank">Dmitry Volkov</a></div>
     <!-- end sidebar copyright -->
 </div>
 <!-- end sidebar -->
@@ -139,43 +144,59 @@
 
             <!-- form -->
             <div class="col-12">
-                <form th:action="@{/addSize}" method="post" th:object="${size}" class="sign__form sign__form--add">
+
+                <form th:action="@{/add-productDetail}" method="post" th:object="${productDetails}"
+                      enctype="multipart/form-data"  class="sign__form sign__form--add">
                     <div class="row">
                         <div class="col-12 col-xl-7">
                             <div class="row">
                                 <div class="col-12">
                                     <div class="sign__group">
-                                        <input type="hidden" th:field="*{sizeId}">
-                                        <label class="sign__label">Name Size:</label>
-                                        <input type="text" th:field="*{sizeName}" class="sign__input" placeholder="Name">
+                                        <input type="hidden" name="product" th:value="${product.productId}" />
                                     </div>
-                                </div>
 
-                                <div class="col-12 col-md-6">
                                     <div class="sign__group">
-                                        <label class="sign__label">Status:</label>
-                                        <ul class="sign__radio">
-                                            <li>
-                                                <input id="statusVisible" type="radio" th:field="*{status}" value="true" />
-                                                <label for="statusVisible">Active</label>
-                                            </li>
-                                            <li>
-                                                <input id="statusHidden" type="radio" th:field="*{status}" value="false" />
-                                                <label for="statusHidden">Inactive</label>
+                                        <label class="sign__label">Image:</label>
+                                        <input type="file" th:multiple="multiple" name="image" class="sign__input" >
+                                    </div>
 
-                                            </li>
-                                        </ul>
+                                    <div class="sign__group">
+                                        <label class="sign__label">Price:</label>
+                                        <input type="text" th:field="*{unitPrice}" class="sign__input" placeholder="Price">
+                                    </div>
 
+                                    <div class="sign__group">
+                                        <label class="sign__label">Quantity:</label>
+                                        <input type="text" th:field="*{stockQuantity}" class="sign__input" placeholder="Quantity">
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="sign__group">
+                                            <label class="sign__label" for="color">Color</label>
+                                            <select class="sign__select" id="color" th:field="*{color}">
+                                                <option th:each="c : ${color}" th:value="${c.colorId}" th:text="${c.colorName}"></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="sign__group">
+                                            <label class="sign__label" for="size">Size</label>
+                                            <select class="sign__select" id="size" th:field="*{size}">
+                                                <option th:each="s: ${size}" th:value="${s.sizeId}" th:text="${s.sizeName}"></option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="sign__group">
+                                        <label class="sign__label">SKU:</label>
+                                        <input type="text" th:field="*{sku}" class="sign__input" placeholder="SKU">
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
 
-
                         <div class="col-12">
-                            <button type="submit" class="sign__btn sign__btn--small"><span>Add Size</span></button>
+                            <button type="submit" class="sign__btn sign__btn--small"><span>Add Color</span></button>
                         </div>
                     </div>
                 </form>
